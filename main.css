@@ -3,7 +3,7 @@
     src: url("/Assets/Fonts/Roobert-Regular.otf");
     font-style: normal;
     font-weight: 200;
-    font-display: optional;
+    font-display: fallback;
 }
 
 @font-face {
@@ -11,7 +11,7 @@
     src: url("/Assets/Fonts/Roobert-Medium.otf");
     font-style: normal;
     font-weight: 300;
-    font-display: optional;
+    font-display: fallback;
 }
 
 @font-face {
@@ -19,7 +19,7 @@
     src: url("/Assets/Fonts/Roobert-SemiBold.otf");
     font-style: normal;
     font-weight: 400;
-    font-display: optional;
+    font-display: fallback;
 }
 
 @font-face {
@@ -27,7 +27,7 @@
     src: url("/Assets/Fonts/CascadiaCodePL-SemiLight.otf");
     font-style: normal;
     font-weight: 200;
-    font-display: optional;
+    font-display: fallback;
 }
 
 * {
