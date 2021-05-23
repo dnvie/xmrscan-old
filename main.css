@@ -1,15 +1,9 @@
 @font-face {
     font-family: 'Roobert';
-    src: url("/Assets/Fonts/Roobert-Light.otf");
-    font-style: normal;
-    font-weight: 100;
-}
-
-@font-face {
-    font-family: 'Roobert';
     src: url("/Assets/Fonts/Roobert-Regular.otf");
     font-style: normal;
     font-weight: 200;
+    font-display: optional;
 }
 
 @font-face {
@@ -17,6 +11,7 @@
     src: url("/Assets/Fonts/Roobert-Medium.otf");
     font-style: normal;
     font-weight: 300;
+    font-display: optional;
 }
 
 @font-face {
@@ -24,20 +19,7 @@
     src: url("/Assets/Fonts/Roobert-SemiBold.otf");
     font-style: normal;
     font-weight: 400;
-}
-
-@font-face {
-    font-family: 'Roobert';
-    src: url("/Assets/Fonts/Roobert-Bold.otf");
-    font-style: normal;
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: 'Roobert';
-    src: url("/Assets/Fonts/Roobert-Heavy.otf");
-    font-style: normal;
-    font-weight: 600;
+    font-display: optional;
 }
 
 @font-face {
@@ -45,6 +27,7 @@
     src: url("/Assets/Fonts/CascadiaCodePL-SemiLight.otf");
     font-style: normal;
     font-weight: 200;
+    font-display: optional;
 }
 
 * {
