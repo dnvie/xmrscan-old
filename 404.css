@@ -1,0 +1,45 @@
+body {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    overflow: hidden;
+}
+
+#textDiv {
+    position: absolute;
+    height: 20%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    padding-top: 40px;
+}
+
+#text {
+    font-family: 'Roobert';
+    font-size: 40px;
+    font-weight: 600;
+}
+
+#moneroChan {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 20%;
+    left: 0%;
+}
+
+#moneroChan img{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+

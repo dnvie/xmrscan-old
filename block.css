@@ -142,10 +142,10 @@
     color: #ff6404;
 }
 
-.grid-item-block:nth-last-child(3) {
+.grid-item-block:nth-last-child(2) {
     border-radius: 0 0 0 13px;
 } 
 
-.grid-item-block:nth-last-child(2) {
+.grid-item-block:nth-last-child(1) {
     border-radius: 0 0 13px 0;
 } 

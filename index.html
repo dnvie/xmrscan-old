@@ -16,7 +16,7 @@
 <body>
 
     <header>
-        <img class="Logo" id="Logo" src="/Assets/Logo.svg">
+        <img class="Logo" id="Logo" src="/Assets/Logo.svg" onclick="home();setTimeout(removeTxList, 100);">
         <label for=""></label><input class="input" type="textbox" name="searchFor"
             placeholder="Search for Blocks or Transactions" onkeydown="search(this)"></input><br>
         <p class="nhr">Network Hashrate:</p>
@@ -96,6 +96,15 @@
 
     <div id="homeButton" onclick="home();setTimeout(removeTxList, 100);">
         <img id="homeButtonSVG" src="/Assets/home.svg">
+    </div>
+
+    <div id="up" onclick="scrollUp();">
+        <img id="upSVG" src="/Assets/up.svg">
+    </div>
+
+    <div id="error" class="error">
+        <img id="closeButton" src="/Assets/x.svg" onclick="removeWarning();">
+        <p id="errorText">No results, please check your input!</p>
     </div>
 
 
@@ -304,12 +313,26 @@
                             showTx(`${inputText}`);
                             temp2();
                         } else {
-                            alert("xd");
+                            warning();
+                            //removeWarning();
                         }
                     });
                 }
             });
         }
+    }
+
+    function warning() {
+        $('#error').addClass('active');
+        setTimeout(removeWarning, 3500);
+    }
+
+    function removeWarning() {
+        $('#error').removeClass('active');
+    }
+
+    function scrollUp () {
+        $("html, body").animate({ scrollTop: "0px" });
     }
 
 </script>
