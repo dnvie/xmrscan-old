@@ -1,127 +1,8 @@
-<html>
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="block.css">
-    <link rel="stylesheet" href="tx.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://unpkg.com/animate-css-grid@latest"></script>
-</head>
-
-<body>
-
-    <header>
-        <img class="Logo" id="Logo" src="/Assets/Logo.svg" onclick="home();setTimeout(removeTxList, 100);">
-        <label for=""></label><input class="input" type="textbox" name="searchFor"
-            placeholder="Search for Blocks or Transactions" onkeydown="search(this)"></input><br>
-        <p class="nhr">Network Hashrate:</p>
-        <p id="hashrate"></p>
-    </header>
-
-    <div id="grid-container" class="grid-container">
-        <div class="grid-item">Height</div>
-        <div class="grid-item">Txs</div>
-        <div class="grid-item">Block Hash</div>
-        <div class="grid-item">Age</div>
-    </div>
-
-    <div id="grid-container-block-wrapper" class="grid-container-block-wrapper">
-        <div id="grid-container-block-section1" class="grid-container-block-section1">
-            <div id="grid-item-block-Block" class="grid-item-block-section1" style="font-weight: 400; font-size: 20px">
-                Block: </div>
-            <div id="grid-item-block-Hash" class="grid-item-block-section1"
-                style="font-family: 'CascadiaCode'; font-weight: 200; font-size: 16px; padding-top: 27px">Hash: </div>
-            <div id="grid-item-block-Size" class="grid-item-block-section1" style="font-weight: 400; font-size: 19px">
-                Size: </div>
-            <div id="grid-item-block-SizekB" class="grid-item-block-section1" style="font-weight: 400; font-size: 19px">
-            </div>
-            <div id="grid-item-block-Reward" class="grid-item-block-section1" style="font-weight: 400; font-size: 19px">
-                Block Reward: </div>
-            <div id="grid-item-block-RewardAmount" class="grid-item-block-section1"
-                style="font-weight: 400; font-size: 19px"></div>
-            <div id="grid-item-block-Coinbase" class="grid-item-block-section1"
-                style="font-weight: 400; font-size: 19px">Coinbase Tx: </div>
-            <div id="grid-item-block-CBHash" class="grid-item-block-section1"
-                style="font-family: 'CascadiaCode'; font-weight: 200; font-size: 16px; padding-top: 27px"></div>
-        </div>
-
-        <div id="grid-container-block-section2" class="grid-container-block-section2">
-            <div id="grid-item-block-Transactions" class="grid-item-block-section2"
-                style="font-weight: 300; font-size: 20px"></div>
-        </div>
-    </div>
-
-    -->
-
-    <div id="grid-container-tx-wrapper" class="grid-container-tx-wrapper">
-        <div id="grid-container-tx-section1" class="grid-container-tx-section1">
-            <div id="grid-item-tx-Transactions" class="grid-item-tx-section1" style="font-weight: 300; font-size: 20px">
-                Transaction Details:</div>
-            <div id="grid-item-tx-age" class="grid-item-tx-section1">2021-21-03 13:03:01</div>
-        </div>
-        <div id="grid-container-tx-section2" class="grid-container-tx-section2">
-            <div id="grid-item-tx-Hash" class="grid-item-tx-section2">Hash: </div>
-            <div id="grid-item-tx-txHash" class="grid-item-tx-section2"></div>
-            <div id="grid-item-tx-extra" class="grid-item-tx-section2">Extra: </div>
-            <div id="grid-item-tx-extra2" class="grid-item-tx-section2"></div>
-        </div>
-        <div id="grid-container-tx-section3" class="grid-container-tx-section3">
-            <div id="grid-item-tx-Block" class="grid-item-tx-section2">Block: </div>
-            <div id="grid-item-tx-BlockNumber" class="grid-item-tx-section2"></div>
-            <div id="grid-item-tx-Ring" class="grid-item-tx-section2">Ring Size: </div>
-            <div id="grid-item-tx-RingSize" class="grid-item-tx-section2"></div>
-            <div id="grid-item-tx-Fee" class="grid-item-tx-section3">Fee/Size: </div>
-            <div id="grid-item-tx-FeeSize" class="grid-item-tx-section3"></div>
-            <div id="grid-item-tx-Confirmations" class="grid-item-tx-section3">Confirmations: </div>
-            <div id="grid-item-tx-ConfirmationsAmount" class="grid-item-tx-section3"></div>
-        </div>
-        <div id="grid-container-tx-section4" class="grid-container-tx-section4">
-            <div id="grid-item-tx-inputs" class="grid-item-tx-section4">Inputs: </div>
-        </div>
-
-        <div id="grid-container-tx-section6" class="grid-container-tx-section6">
-            <div id="grid-item-tx-inputs" class="grid-item-tx-section6">Outputs: </div>
-        </div>
-
-    </div>
-
-    <div id="backButton" onclick="showBlocks();">
-        <img id="backButtonSVG" src="/Assets/backArrow.svg">
-    </div>
-
-    <div id="homeButton" onclick="home();setTimeout(removeTxList, 100);">
-        <img id="homeButtonSVG" src="/Assets/home.svg">
-    </div>
-
-    <div id="up" onclick="scrollUp();">
-        <img id="upSVG" src="/Assets/up.svg">
-    </div>
-
-    <div id="error" class="error">
-        <img id="closeButton" src="/Assets/x.svg" onclick="removeWarning();">
-        <p id="errorText">No results, please check your input!</p>
-    </div>
-
-
-</body>
-
-<script>
-    const grid = document.querySelector(".grid-container");
-    animateCSSGrid.wrapGrid(grid, { duration: 50, easing: 'linear' });
-</script>
-
-<script>
-    var height;
+<html> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width,initial-scale=1"> <meta http-equiv="X-UA-Compatible" content="ie=edge"> <meta charset="UTF-8"> <link rel="stylesheet" href="main.css"> <link rel="stylesheet" href="block.css"> <link rel="stylesheet" href="tx.css"> <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script><script src="https://unpkg.com/animate-css-grid@latest"></script></head><body> <header> <img class="Logo" id="Logo" src="/Assets/Logo.svg" onclick="home(),setTimeout(removeTxList,100)"> <label for=""></label><input class="input" type="textbox" name="searchFor" placeholder="Search for Blocks or Transactions" onkeydown="search(this)"><br> <p class="nhr">Network Hashrate:</p> <p id="hashrate"></p> </header> <div id="grid-container" class="grid-container"> <div class="grid-item">Height</div> <div class="grid-item">Txs</div> <div class="grid-item">Block Hash</div> <div class="grid-item">Age</div> </div> <div id="grid-container-block-wrapper" class="grid-container-block-wrapper"> <div id="grid-container-block-section1" class="grid-container-block-section1"> <div id="grid-item-block-Block" class="grid-item-block-section1" style="font-weight:400;font-size:20px"> Block: </div> <div id="grid-item-block-Hash" class="grid-item-block-section1" style="font-family:CascadiaCode;font-weight:200;font-size:16px;padding-top:27px">Hash: </div> <div id="grid-item-block-Size" class="grid-item-block-section1" style="font-weight:400;font-size:19px"> Size: </div> <div id="grid-item-block-SizekB" class="grid-item-block-section1" style="font-weight:400;font-size:19px"> </div> <div id="grid-item-block-Reward" class="grid-item-block-section1" style="font-weight:400;font-size:19px"> Block Reward: </div> <div id="grid-item-block-RewardAmount" class="grid-item-block-section1" style="font-weight:400;font-size:19px"></div> <div id="grid-item-block-Coinbase" class="grid-item-block-section1" style="font-weight:400;font-size:19px">Coinbase Tx: </div> <div id="grid-item-block-CBHash" class="grid-item-block-section1" style="font-family:CascadiaCode;font-weight:200;font-size:16px;padding-top:27px"></div> </div> <div id="grid-container-block-section2" class="grid-container-block-section2"> <div id="grid-item-block-Transactions" class="grid-item-block-section2" style="font-weight:300;font-size:20px"></div> </div> </div> <div id="grid-container-tx-wrapper" class="grid-container-tx-wrapper"> <div id="grid-container-tx-section1" class="grid-container-tx-section1"> <div id="grid-item-tx-Transactions" class="grid-item-tx-section1" style="font-weight:300;font-size:20px"> Transaction Details:</div> <div id="grid-item-tx-age" class="grid-item-tx-section1">2021-21-03 13:03:01</div> </div> <div id="grid-container-tx-section2" class="grid-container-tx-section2"> <div id="grid-item-tx-Hash" class="grid-item-tx-section2">Hash: </div> <div id="grid-item-tx-txHash" class="grid-item-tx-section2"></div> <div id="grid-item-tx-extra" class="grid-item-tx-section2">Extra: </div> <div id="grid-item-tx-extra2" class="grid-item-tx-section2"></div> </div> <div id="grid-container-tx-section3" class="grid-container-tx-section3"> <div id="grid-item-tx-Block" class="grid-item-tx-section2">Block: </div> <div id="grid-item-tx-BlockNumber" class="grid-item-tx-section2"></div> <div id="grid-item-tx-Ring" class="grid-item-tx-section2">Ring Size: </div> <div id="grid-item-tx-RingSize" class="grid-item-tx-section2"></div> <div id="grid-item-tx-Fee" class="grid-item-tx-section3">Fee/Size: </div> <div id="grid-item-tx-FeeSize" class="grid-item-tx-section3"></div> <div id="grid-item-tx-Confirmations" class="grid-item-tx-section3">Confirmations: </div> <div id="grid-item-tx-ConfirmationsAmount" class="grid-item-tx-section3"></div> </div> <div id="grid-container-tx-section4" class="grid-container-tx-section4"> <div id="grid-item-tx-inputs" class="grid-item-tx-section4">Inputs: </div> </div> <div id="grid-container-tx-section6" class="grid-container-tx-section6"> <div id="grid-item-tx-inputs" class="grid-item-tx-section6">Outputs: </div> </div> </div> <div id="backButton" onclick="showBlocks()"> <img id="backButtonSVG" src="/Assets/backArrow.svg"> </div> <div id="homeButton" onclick="home(),setTimeout(removeTxList,100)"> <img id="homeButtonSVG" src="/Assets/home.svg"> </div> <div id="up" onclick="scrollUp()"> <img id="upSVG" src="/Assets/up.svg"> </div> <div id="error" class="error"> <img id="closeButton" src="/Assets/x.svg" onclick="removeWarning()"> <p id="errorText">No results, please check your input!</p> </div> </body> <script>const grid=document.querySelector(".grid-container");animateCSSGrid.wrapGrid(grid,{duration:50,easing:"linear"});</script><script>var height;
     var hashrate;
     var scrollY = 0;
 
     $(window).on("load", $('#grid-container').addClass('active'));
-    //$(window).on("load", $('#grid-container-tx-wrapper').addClass('active'));
 
     $.getJSON(`https://localmonero.co/blocks/api/get_stats`, function (initialize) {
         height = initialize.height;
@@ -189,9 +70,7 @@
             const url3 = `https://monero.mycryptoapi.com/api/transaction/${txInput}`;
             const data3 = await fetch(url3);
             const block3 = await data3.json();
-
             document.getElementById("grid-container-tx-section6").style.top = (768 + (block3.data.inputs.length) * 72);
-
             document.getElementById("grid-item-tx-txHash").innerHTML = txInput;
             document.getElementById("grid-item-tx-age").innerHTML = block3.data.timestamp_utc;
             if (block3.data.extra.length >= 88) {
@@ -224,7 +103,6 @@
     function temp() {
         $('#grid-container').removeClass('active');
         $('#backButton').addClass('active');
-        //$('#homeButton').addClass('active');
         $('#grid-container-block-wrapper').addClass('active');
         scrollY = window.pageYOffset;
         $("html, body").animate({ scrollTop: "0px" });
@@ -314,7 +192,6 @@
                             temp2();
                         } else {
                             warning();
-                            //removeWarning();
                         }
                     });
                 }
@@ -333,8 +210,4 @@
 
     function scrollUp () {
         $("html, body").animate({ scrollTop: "0px" });
-    }
-
-</script>
-
-</html>
+    }</script></html>
