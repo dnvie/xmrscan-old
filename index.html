@@ -18,7 +18,7 @@
     <header>
         <img class="Logo" id="Logo" src="/Assets/Logo.svg">
         <label for=""></label><input class="input" type="textbox" name="searchFor"
-            placeholder="Search for Blocks or Transactions"></input><br>
+            placeholder="Search for Blocks or Transactions" onkeydown="search(this)"></input><br>
         <p class="nhr">Network Hashrate:</p>
         <p id="hashrate"></p>
     </header>
@@ -60,7 +60,8 @@
 
     <div id="grid-container-tx-wrapper" class="grid-container-tx-wrapper">
         <div id="grid-container-tx-section1" class="grid-container-tx-section1">
-            <div id="grid-item-tx-Transactions" class="grid-item-tx-section1"style="font-weight: 300; font-size: 20px">Transaction Details:</div>
+            <div id="grid-item-tx-Transactions" class="grid-item-tx-section1" style="font-weight: 300; font-size: 20px">
+                Transaction Details:</div>
             <div id="grid-item-tx-age" class="grid-item-tx-section1">2021-21-03 13:03:01</div>
         </div>
         <div id="grid-container-tx-section2" class="grid-container-tx-section2">
@@ -82,11 +83,11 @@
         <div id="grid-container-tx-section4" class="grid-container-tx-section4">
             <div id="grid-item-tx-inputs" class="grid-item-tx-section4">Inputs: </div>
         </div>
-       
+
         <div id="grid-container-tx-section6" class="grid-container-tx-section6">
             <div id="grid-item-tx-inputs" class="grid-item-tx-section6">Outputs: </div>
         </div>
-        
+
     </div>
 
     <div id="backButton" onclick="showBlocks();">
@@ -132,7 +133,7 @@
             const data = await fetch(url);
             const block = await data.json();
             $("#grid-container").append(`<div class="grid-item" style ="font-weight: 400; font-size: 19px">${block.data.block_height}</div>`);
-            $("#grid-container").append(`<div class="grid-item" style ="font-size: 19px">${(block.data.txs.length)-1}</div>`);
+            $("#grid-container").append(`<div class="grid-item" style ="font-size: 19px">${(block.data.txs.length) - 1}</div>`);
             $("#grid-container").append(`<div class="grid-item hashHover" style="font-family: 'CascadiaCode'; font-weight: 200; font-size: 16px; padding-top: 24px; cursor: pointer" onclick="showBlock('${block.data.hash}');setTimeout(temp, 100);">${block.data.hash}</div>`);
             $("#grid-container").append(`<div class="grid-item" style ="font-weight: 300; font-size: 16px; padding-top: 22.5px; color: #898989">${moment.unix(block.data.timestamp).startOf('seconds').fromNow()}</div>`);
         };
@@ -156,13 +157,12 @@
             document.getElementById("grid-item-block-Coinbase").innerHTML = ("Coinbase Tx: ");
             document.getElementById("grid-item-block-CBHash").innerHTML = block2.data.txs[0].tx_hash;
             document.getElementById("grid-item-block-RewardAmount").innerHTML = ((block2.data.txs[0].xmr_outputs) / 1000000000000).toString().concat(" XMR");
-            document.getElementById("grid-item-block-Transactions").innerHTML = (block2.data.txs.length-1).toString().concat(" Transactions: ");
+            document.getElementById("grid-item-block-Transactions").innerHTML = (block2.data.txs.length - 1).toString().concat(" Transactions: ");
             $('<div/>', { id: 'grid-container-block', "class": 'grid-container-block', }).appendTo('#grid-container-block-section1');
             $("#grid-container-block").append(`<div class="grid-item-block" style ="font-weight: 400; font-size: 19px">Hash</div>`);
             $("#grid-container-block").append(`<div class="grid-item-block" style="font-weight: 400; font-size: 19px">Size</div>`);
             for (let i = 1; i < block2.data.txs.length; i++) {
                 temp = block2.data.txs[i].tx_hash;
-                console.log(temp);
                 $("#grid-container-block").append(`<div class="grid-item-block" style="font-family: 'CascadiaCode'; font-weight: 200; font-size: 16px; padding-top: 24px;" onclick="showTx('${block2.data.txs[i].tx_hash}');temp2()">${block2.data.txs[i].tx_hash}</div>`);
                 $("#grid-container-block").append(`<div class="grid-item-block" style ="font-weight: 400; font-size: 19px">${(block2.data.txs[i].tx_size) / 1000} kB</div>`);
             }
@@ -180,36 +180,35 @@
             const url3 = `https://monero.mycryptoapi.com/api/transaction/${txInput}`;
             const data3 = await fetch(url3);
             const block3 = await data3.json();
-            console.log((768 + (block3.data.inputs.length)*72));
 
-            document.getElementById("grid-container-tx-section6").style.top = (768 + (block3.data.inputs.length)*72);
+            document.getElementById("grid-container-tx-section6").style.top = (768 + (block3.data.inputs.length) * 72);
 
             document.getElementById("grid-item-tx-txHash").innerHTML = txInput;
             document.getElementById("grid-item-tx-age").innerHTML = block3.data.timestamp_utc;
-            if(block3.data.extra.length >= 88) {
+            if (block3.data.extra.length >= 88) {
                 document.getElementById("grid-item-tx-extra2").innerHTML = block3.data.extra.toString().substr(0, 87).concat("...");
             } else {
                 document.getElementById("grid-item-tx-extra2").innerHTML = block3.data.extra;
             }
             document.getElementById("grid-item-tx-BlockNumber").innerHTML = block3.data.block_height;
             document.getElementById("grid-item-tx-RingSize").innerHTML = block3.data.mixin;
-            document.getElementById("grid-item-tx-FeeSize").innerHTML = ((block3.data.tx_fee)/1000000000000).toString().concat(" per kB / ") + ((block3.data.tx_size)/1000).toString().concat(" kB");
+            document.getElementById("grid-item-tx-FeeSize").innerHTML = ((block3.data.tx_fee) / 1000000000000).toString().concat(" per kB / ") + ((block3.data.tx_size) / 1000).toString().concat(" kB");
             document.getElementById("grid-item-tx-ConfirmationsAmount").innerHTML = block3.data.confirmations;
             $('<div/>', { id: 'grid-container-tx-section5', "class": 'grid-container-tx-section5', }).appendTo('#grid-container-tx-wrapper');
             $("#grid-container-tx-section5").append(`<div class="grid-item-tx-section5">Key Image: </div>`);
             $('<div/>', { id: 'grid-container-tx-section7', "class": 'grid-container-tx-section7', }).appendTo('#grid-container-tx-wrapper');
             $("#grid-container-tx-section7").append(`<div class="grid-item-tx-section7">Stealth Address: </div>`);
-            document.getElementById("grid-container-tx-section7").style.top = (808 + (block3.data.inputs.length)*72);
+            document.getElementById("grid-container-tx-section7").style.top = (808 + (block3.data.inputs.length) * 72);
 
-            for(let i = 0; i < block3.data.inputs.length; i++) {
+            for (let i = 0; i < block3.data.inputs.length; i++) {
                 $("#grid-container-tx-section5").append(`<div class="grid-item-tx-section5">${block3.data.inputs[i].key_image}</div>`);
             }
-            for(let i = 0; i < block3.data.outputs.length; i++) {
+            for (let i = 0; i < block3.data.outputs.length; i++) {
                 $("#grid-container-tx-section7").append(`<div class="grid-item-tx-section7">${block3.data.outputs[i].public_key}</div>`);
             }
 
             $('.grid-container-tx-wrapper').addClass('active');
-        };  
+        };
         getTx();
     }
 
@@ -232,12 +231,12 @@
         $('#grid-container-block-wrapper').removeClass('active');
         $('#grid-container-tx-wrapper').addClass('active');
         $("html, body").animate({ scrollTop: "0px" });
-        
+
     }
 
     function showBlocks() {
 
-        if($('#grid-container-block-wrapper').hasClass('active')) {
+        if ($('#grid-container-block-wrapper').hasClass('active')) {
             $('#grid-container').addClass('active');
             $('#backButton').removeClass('active');
             $('#homeButton').removeClass('active');
@@ -287,6 +286,31 @@
             homeButton.style.top = "120px";
         }
     })
+
+    function search(ele) {
+        if (event.key === 'Enter') {
+            var inputText = ele.value.trim();
+
+            $.getJSON(`https://monero.mycryptoapi.com/api/block/${inputText}`, function (block) {
+                if (block.data.hash != undefined) {
+                    removeTxList();
+                    showBlock(`${inputText}`);
+                    temp();
+                } else {
+                    $.getJSON(`https://monero.mycryptoapi.com/api/transaction/${inputText}`, function (block2) {
+                        if (block2.data.confirmations != undefined) {
+                            $('#grid-container-tx-section5').remove();
+                            $('#grid-container-tx-section7').remove();
+                            showTx(`${inputText}`);
+                            temp2();
+                        } else {
+                            alert("xd");
+                        }
+                    });
+                }
+            });
+        }
+    }
 
 </script>
 
