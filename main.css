@@ -1,9 +1,15 @@
 @font-face {
     font-family: 'Roobert';
+    src: url("/Assets/Fonts/Roobert-Light.otf");
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'Roobert';
     src: url("/Assets/Fonts/Roobert-Regular.otf");
     font-style: normal;
     font-weight: 200;
-    font-display: fallback;
 }
 
 @font-face {
@@ -11,7 +17,6 @@
     src: url("/Assets/Fonts/Roobert-Medium.otf");
     font-style: normal;
     font-weight: 300;
-    font-display: fallback;
 }
 
 @font-face {
@@ -19,7 +24,20 @@
     src: url("/Assets/Fonts/Roobert-SemiBold.otf");
     font-style: normal;
     font-weight: 400;
-    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'Roobert';
+    src: url("/Assets/Fonts/Roobert-Bold.otf");
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Roobert';
+    src: url("/Assets/Fonts/Roobert-Heavy.otf");
+    font-style: normal;
+    font-weight: 600;
 }
 
 @font-face {
@@ -27,7 +45,34 @@
     src: url("/Assets/Fonts/CascadiaCodePL-SemiLight.otf");
     font-style: normal;
     font-weight: 200;
-    font-display: fallback;
+}
+
+:root {
+    --background: rgb(247, 247, 247);
+    --backgroundInv: rgb(19, 19, 19);
+    --text: #2e2e2e;
+    --text2: #898989;
+    --orange:#ff6404;
+    --lightorange:#ffece4;
+    --containerBG: rgb(255, 255, 255);
+    --buttonHoverBG: #ffece488;
+    --inputBG: rgba(0, 0, 0, 0.048);
+    --inputHover: rgba(0, 0, 0, 0.062);
+    --inv: black;
+}
+
+[data-theme="dark"] {
+    --background: #141414;
+    --backgroundInv: rgb(247, 247, 247);
+    --text: #b4b4b4;
+    --text2: rgb(138, 138, 138);
+    --orange:#ff6404;
+    --lightorange: #2C1C12;
+    --containerBG: #1B1B1B;
+    --buttonHoverBG: #2c1c1254;
+    --inputBG: rgba(0, 0, 0, 0.301);
+    --inputHover: rgba(0, 0, 0, 0.662);
+    --inv: white;
 }
 
 * {
@@ -40,12 +85,12 @@ body {
     height: 110%;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    background-color: rgb(247, 247, 247);
+    background-color: var(--background);
 }
 
 header {
     position: absolute;
-    background-color: rgb(247, 247, 247);
+    background-color: var(--background);
     width: 100%;
     height: 210px;
     top: 0%;
@@ -72,7 +117,7 @@ header {
     font-size: 20px;
     font-family: 'Roobert';
     font-weight: 400;
-    color: black;
+    color: var(--backgroundInv);
     text-align: right;
     align-items: right;
     opacity: 100%;
@@ -86,7 +131,7 @@ header {
     font-size: 20px;
     font-family: 'Roobert';
     font-weight: 400;
-    color: #ff6404;
+    color: var(--orange);
     text-align: right;
     align-items: right;
     opacity: 100%;
@@ -110,44 +155,44 @@ header {
 }
 
 .grid-item {
-    background-color:rgb(255, 255, 255);
+    background-color:var(--containerBG);
     padding: 22.5px;
     font-size: 22px;
-    color: #2e2e2e;
+    color: var(--text);
     text-align: center;
     font-family: 'Roobert';
     font-weight: 200;
 }
 
 .grid-item:nth-child(1) {
-    background-color: #ffece4;
+    background-color: var(--lightorange);
     border-radius: 13px 0 0 0;
     border: 0px solid;
     font-family: 'Roobert';
     font-weight: 400;
-    color: #ff6404;
+    color: var(--orange);
 }
 .grid-item:nth-child(2) {
-    background-color: #ffece4;
+    background-color: var(--lightorange);
     border: 0px solid;
     font-family: 'Roobert';
     font-weight: 400;
-    color: #ff6404;
+    color: var(--orange);
 }
 .grid-item:nth-child(3) {
-    background-color: #ffece4;
+    background-color: var(--lightorange);
     border: 0px solid;
     font-family: 'Roobert';
     font-weight: 400;
-    color: #ff6404;
+    color: var(--orange);
 }
 .grid-item:nth-child(4) {
-    background-color: #ffece4;
+    background-color: var(--lightorange);
     border-radius: 0 13px 0 0;
     border: 0px solid;
     font-family: 'Roobert';
     font-weight: 400;
-    color: #ff6404;
+    color: var(--orange);
 }
 .grid-item:nth-last-child(4) {
     border-radius: 0 0 0 13px;
@@ -162,7 +207,7 @@ header {
     top: 80px;
     border-radius: 13px;
     border-style: none;
-    background-color: rgba(0, 0, 0, 0.048);
+    background-color: var(--inputBG);
     height: 45px;
     right: 34%;
     width: 32%;
@@ -172,20 +217,20 @@ header {
     text-align: left;
     font-family: 'Roobert';
     font-weight: 300;
-    color: rgba(0, 0, 0, 0.815);
+    color: var(--text);
     z-index: 12;
 }
 
 .input:hover {
-    background-color: rgba(0, 0, 0, 0.062);
+    background-color: var(--inputHover);
 }
 
 .input:focus {
-    background-color: rgba(0, 0, 0, 0.062);
+    background-color: var(--inputHover);
 }
 
 .hashHover:hover {
-    color: #ff6404;
+    color: var(--orange);
     transition: all 0.025s ease-in-out;
 }
 
@@ -210,7 +255,7 @@ user-select: none;
     }
 
 #backButton:hover {
-    background-color: #ffece488;
+    background-color: var(--buttonHoverBG);
     transform: translateX(-2px);
     }
 
@@ -250,7 +295,7 @@ user-select: none;
         }
     
     #homeButton:hover {
-        background-color: #ffece488;
+        background-color: var(--buttonHoverBG);
         transform: translateX(-2px);
         }
     
@@ -276,7 +321,7 @@ user-select: none;
     width: 32%;
     border-radius: 13px;
     top: 139px;
-    background-color: rgba(255, 255, 255);
+    background-color: var(--containerBG);
     z-index: 0;
     opacity: 0;
     user-select: none;
@@ -299,6 +344,7 @@ user-select: none;
     opacity: 30%;
     padding: 15px;
     z-index: 55;
+    fill: var(--text);
 }
 
 #closeButton:hover {
@@ -335,7 +381,7 @@ user-select: none;
 
 
 #up:hover {
-    background-color: #2e2e2e3b;
+    background-color: var(--inputBG);
     transform: translateY(-2px);
     cursor: pointer;
     opacity: 1;
@@ -352,6 +398,100 @@ user-select: none;
     top: 40%;
     left: 40%;
     width: 20%;
+}
 
+.theme-switch {
+    position: fixed;
+    display: inline;
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    padding-left: 30px;
+    padding-bottom: 22px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.theme-switch input {
+    position: fixed;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: fixed;
+    bottom: 3%;
+    left: 2%;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: var(--text);
+    opacity: 30%;
+    transition: all 0.25s ease-out;
+}
+
+
+.theme-switch input:checked~.checkmark {
+    background-color: var(--text);
+    transition: all 0.25s ease-out;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    transition: all 0.25s ease-out;
+}
+
+.theme-switch input:checked~.checkmark:after {
+    display: block;
+    transition: all 0.25s ease-out;
+}
+
+#themeNotify {
+    position: absolute;
+    border-radius: 8px;
+    z-index: 40;
+    bottom: 2%;
+    left: 3.7%;
+    background-color: var(--containerBG);
+    width: 140px;
+    height: 40px;
+    color: var(--text);
+    font-family: 'Roobert';
+    padding-bottom: 9px;
+    font-size: 15px;
+    font-weight: 300;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 0px 0px 61px -12px rgba(0, 0, 0, 0.178);
+    opacity: 0;
+    user-select: none;
+}
+
+#themeNotify.active {
+    position: absolute;
+    border-radius: 8px;
+    z-index: 40;
+    bottom: 2%;
+    left: 4%;
+    background-color: var(--containerBG);
+    width: 140px;
+    height: 40px;
+    color: var(--text);
+    font-family: 'Roobert';
+    padding-bottom: 9px;
+    font-size: 15px;
+    font-weight: 300;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 0px 0px 61px -12px rgba(0, 0, 0, 0.178);
+    opacity: 1;
+    user-select: none;
 }
 
