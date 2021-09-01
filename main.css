@@ -48,15 +48,16 @@
 }
 
 :root {
-    --background: rgb(247, 247, 247);
+    --background: rgb(244, 244, 244);
     --backgroundInv: rgb(19, 19, 19);
+    --headerBG: rgba(244, 244, 244, 0.5);
     --text: #2e2e2e;
     --text2: #898989;
     --orange: #ff6404;
     --lightorange: #ffece4;
     --containerBG: rgb(255, 255, 255);
     --buttonHoverBG: #ffece488;
-    --inputBG: rgba(0, 0, 0, 0.048);
+    --inputBG: #ffffff;
     --inputHover: rgba(0, 0, 0, 0.062);
     --mobileNavHover: rgba(0, 0, 0, 0.096);
     --inv: black;
@@ -65,6 +66,7 @@
 [data-theme="dark"] {
     --background: #141414;
     --backgroundInv: rgb(247, 247, 247);
+    --headerBG: rgba(20, 20, 20, 0.5);
     --text: #b4b4b4;
     --text2: rgb(138, 138, 138);
     --orange: #ff6404;
@@ -91,52 +93,123 @@ body {
 }
 
 header {
-    position: absolute;
-    background-color: var(--background);
+    position: fixed;
+    background: var(--headerBG);
+    backdrop-filter: blur(20px);
     width: 100%;
     height: 210px;
     top: 0%;
-    z-index: 10;
+    z-index: 50;
+    transition: all 0.15s ease-in-out;
+}
+
+header.active {
+    height: 80px;
+    transition: all 0.15s ease-in-out;
 }
 
 .logo {
     position: absolute;
-    height: 20%;
-    top: 77px;
-    left: 100px;
+    height: 40px;
     z-index: 70;
+    top: 0px;
+    bottom: 0;
+    left: 70px;
+    margin: auto;
+    transform: scale(0.95);
 }
 
 .logo:hover {
     cursor: pointer;
 }
 
-.nhr {
+.logo.active {
+    transform: scale(0.75);
+}
+
+.pLogo {
     position: absolute;
-    bottom: 86px;
-    width: 90%;
-    right: 100px;
-    font-size: 20px;
+    height: 45px;
+    z-index: 70;
+    top: 0px;
+    bottom: 0;
+    right: 70px;
+    margin: auto;
+}
+
+.infoBox {
+    position: absolute;
+    width: 230px;
+    height: 45px;
+    top: 0px;
+    bottom: 0;
+    margin: auto;
+    font-size: 16px;
     font-family: 'Roobert';
     font-weight: 400;
     color: var(--backgroundInv);
-    text-align: right;
-    align-items: right;
-    opacity: 100%;
+    text-align: center;
+    align-items: center;
+    opacity: 1;
+    line-height: 45px;
+    opacity: 1;
+    background-color: var(--inputBG);
 }
 
-#hashrate {
+#priceInfo {
+    right: 0px;
+    top: 0px;
+    border-radius: 13px 0 0 13px;
+}
+
+#xmrPrice {
+    font-weight: 300;
+    opacity: 0.6;
+}
+
+#priceInfo.active {
+    transform: scale(0.85);
+    border-radius: 13px 13px 13px 13px;
+}
+
+.input {
     position: absolute;
-    bottom: 61px;
-    width: 90%;
-    right: 100px;
-    font-size: 20px;
+    height: 45px;
+    width: 700px;
+    top: 0;
+    bottom: 0;
+    right: 0px;
+    left: 0;
+    margin: auto;
+    border-radius: 13px;
+    border-style: none;
+    background-color: var(--inputBG);
+    outline: none;
+    font-size: 14px;
+    padding-left: 20px;
+    text-align: left;
     font-family: 'Roobert';
-    font-weight: 400;
-    color: var(--orange);
-    text-align: right;
-    align-items: right;
-    opacity: 100%;
+    font-weight: 300;
+    color: var(--text);
+    z-index: 12;
+    box-shadow: 0px 10px 15px #00000008;
+}
+
+.input:focus {
+    box-shadow: 0px 10px 22px #00000013;
+}
+
+.input.active {
+    transform: scale(0.85);
+    width: 600px;
+}
+
+.fa-caret-up {
+    color: #22c513;
+}
+
+.fa-caret-down {
+    color: #f13535;
 }
 
 .grid-container {
@@ -233,33 +306,6 @@ header {
     color: var(--text2);
 }
 
-.input {
-    position: absolute;
-    top: 80px;
-    border-radius: 13px;
-    border-style: none;
-    background-color: var(--inputBG);
-    height: 45px;
-    right: 34%;
-    width: 32%;
-    outline: none;
-    font-size: 14px;
-    padding-left: 20px;
-    text-align: left;
-    font-family: 'Roobert';
-    font-weight: 300;
-    color: var(--text);
-    z-index: 12;
-}
-
-.input:hover {
-    background-color: var(--inputHover);
-}
-
-.input:focus {
-    background-color: var(--inputHover);
-}
-
 .hashHover:hover {
     color: var(--orange);
     transition: all 0.025s ease-in-out;
@@ -273,7 +319,7 @@ header {
     border-radius: 9px;
     top: 266px;
     left: 12.5%;
-    z-index: 20;
+    z-index: 52;
     opacity: 0;
     user-select: none;
 }
@@ -313,7 +359,7 @@ header {
     border-radius: 9px;
     top: 336px;
     left: 12.5%;
-    z-index: 20;
+    z-index: 53;
     opacity: 0;
     user-select: none;
 }
@@ -348,15 +394,17 @@ header {
 #error {
     position: absolute;
     height: 45px;
-    right: 34%;
-    width: 32%;
-    border-radius: 13px;
+    width: 700px;
     top: 139px;
-    background-color: var(--containerBG);
+    right: 0px;
+    left: 0;
+    margin: auto;
+    border-radius: 13px;
+    background-color: rgb(255, 228, 228);
     z-index: 0;
     opacity: 0;
     user-select: none;
-    box-shadow: 0px 0px 61px -12px rgba(0, 0, 0, 0.178);
+    box-shadow: 0px 10px 15px #00000008;
 }
 
 #error.active {
@@ -391,7 +439,7 @@ header {
     font-family: 'Roobert';
     font-size: 14px;
     font-weight: 300;
-    color: #ff0022;
+    color: #ff0022d3;
     padding-left: 20px;
     text-align: left;
     vertical-align: middle;
@@ -433,9 +481,11 @@ header {
 #themeNotify {
     position: absolute;
     border-radius: 8px;
-    z-index: 40;
-    top: 134px;
-    left: 90px;
+    z-index: 51;
+    top: 110px;
+    bottom: 0;
+    left: 55px;
+    margin: auto;
     background-color: var(--containerBG);
     width: 140px;
     height: 40px;
@@ -453,21 +503,6 @@ header {
 
 #themeNotify.active {
     position: absolute;
-    top: 137px;
-    left: 90px;
-    border-radius: 8px;
-    z-index: 40;
-    background-color: var(--containerBG);
-    width: 140px;
-    height: 40px;
-    color: var(--text);
-    font-family: 'Roobert';
-    padding-bottom: 9px;
-    font-size: 15px;
-    font-weight: 300;
-    text-align: center;
-    vertical-align: middle;
-    box-shadow: 0px 0px 61px -12px rgba(0, 0, 0, 0.178);
     opacity: 1;
     user-select: none;
 }
@@ -644,16 +679,6 @@ header {
     #homeButton.active {
         left: 3.5%;
     }
-    #themeNotify {
-        top: 134px;
-        left: 90px;
-        width: 140px;
-        height: 40px;
-        font-size: 15px;
-    }
-    #themeNotify.active {
-        top: 137px;
-    }
     #up {
         width: 70px;
         right: 4%;
@@ -689,16 +714,6 @@ header {
         background-color: transparent;
         transform: scale(0.7);
     }
-    #themeNotify {
-        top: 134px;
-        left: 90px;
-        width: 140px;
-        height: 40px;
-        font-size: 15px;
-    }
-    #themeNotify.active {
-        top: 137px;
-    }
     #up {
         width: 70px;
         right: 0.5%;
@@ -706,32 +721,18 @@ header {
     #up:hover {
         background-color: transparent;
     }
-    ;
-    .logo {
-        height: 18%;
-        top: 80px;
-        left: 50px;
-    }
-    .logo:hover {
-        cursor: pointer;
-    }
-    .nhr {
-        bottom: 95px;
-        width: 90%;
-        right: 50px;
-        font-size: 16px;
-    }
-    #hashrate {
-        bottom: 70px;
-        width: 90%;
-        right: 50px;
-        font-size: 16px;
-    }
     .input {
-        right: 27%;
-        width: 46%;
-        font-size: 13px;
-        padding-left: 20px;
+        width: 500px;
+    }
+    #priceInfo {
+        font-size: 14px;
+        width: 180px;
+    }
+    .logo {
+        transform: scale(0.8);
+    }
+    #error {
+        width: 500px;
     }
 }
 
@@ -759,32 +760,6 @@ header {
         padding-top: 22.5px;
         color: var(--text2);
     }
-    .logo {
-        height: 18%;
-        top: 80px;
-        left: 25px;
-    }
-    .logo:hover {
-        cursor: pointer;
-    }
-    .nhr {
-        bottom: 95px;
-        width: 90%;
-        right: 25px;
-        font-size: 16px;
-    }
-    #hashrate {
-        bottom: 70px;
-        width: 90%;
-        right: 25px;
-        font-size: 16px;
-    }
-    .input {
-        right: 25%;
-        width: 50%;
-        font-size: 13px;
-        padding-left: 20px;
-    }
     #backButton {
         display: none;
         user-select: none;
@@ -802,18 +777,67 @@ header {
         user-select: initial;
         pointer-events: all;
     }
-    #themeNotify {
-        top: 124px;
-        left: 10px;
-        width: 140px;
-        height: 40px;
-        font-size: 15px;
-        transform: scale(0.8);
+    .logo {
+        top: 35px;
+        bottom: initial;
+        left: 0px;
+        right: 0;
     }
-    #themeNotify.active {
-        top: 127px;
-        left: 10px;
-        transform: scale(0.8);
+    .logo.active {
+        top: -50px;
+        opacity: 0;
+        user-select: none;
+        pointer-events: none;
+    }
+    #priceInfo {
+        top: 180px;
+        background-color: var(--inputBG);
+        border-radius: 13px;
+        left: 0;
+        right: 0;
+        bottom: initial;
+    }
+    #priceInfo.active {
+        top: -30px;
+        opacity: 0;
+        user-select: none;
+        pointer-events: none;
+    }
+    .input {
+        transform: scale(1.1);
+        top: 50px;
+    }
+    .input.active {
+        transform: scale(0.85);
+        top: 0px;
+    }
+    #error {
+        transform: scale(1.1);
+        top: 140px;
+    }
+    #error.active {
+        transform: scale(1.1);
+        top: 170px;
+    }
+    #themeNotify {
+        transform: scale(0.7);
+        top: -35px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 140px;
+        height: 30px;
+        line-height: 30px;
+        vertical-align: middle;
+        text-align: center;
+    }
+    #themeText {
+        position: absolute;
+        top: 3px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
     }
 }
 
@@ -845,113 +869,56 @@ header {
         padding-top: 22.5px;
         color: var(--text2);
     }
-    .logo {
-        height: 18%;
-        top: 80px;
-        left: 50px;
-    }
-    .nhr {
-        display: none;
-    }
-    #hashrate {
-        display: none;
-    }
-    .input {
-        right: 50px;
-        width: 60%;
-        font-size: 13px;
-        padding-left: 20px;
-    }
-    #error {
-        right: 50px;
-        width: 60%;
-    }
-    #themeNotify {
-        top: 124px;
-        left: 32px;
-        width: 140px;
-        height: 40px;
-        font-size: 15px;
-        transform: scale(0.8);
-    }
-    #themeNotify.active {
-        top: 127px;
-        left: 32px;
-        transform: scale(0.8);
-    }
 }
 
 @media only screen and (max-width: 625px) {
     .grid-container {
         grid-template-columns: 18% 10% 48% 24%;
     }
-    .logo {
-        width: 20%;
-        left: 40%;
-        top: 40px;
-    }
     .input {
-        left: 10%;
-        width: 80%;
-        top: 120px;
-        font-size: 13px;
-        padding-left: 20px;
+        width: 350px;
     }
     #error {
-        left: 10%;
-        width: 80%;
-        top: 180px;
-    }
-    #error.active {
-        opacity: 1;
-        z-index: 50;
-        user-select: initial;
-        top: 181px;
-    }
-    #themeNotify {
-        position: absolute;
-        top: 36px;
-        left: 230;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        width: 140px;
-        height: 40px;
-        font-size: 15px;
-        transform: scale(0.8);
-    }
-    #themeNotify.active {
-        top: 36px;
-        left: 234px;
-        transform: scale(0.8);
+        width: 350px;
     }
 }
 
 @media only screen and (max-width: 500px) {
     .grid-item {
         padding: 22.5px;
-        font-size: 15px;
+        font-size: 14px;
         text-align: left;
-        padding-left: 5px;
+        padding-left: 10px;
     }
     .bHeight {
         font-weight: 400;
-        font-size: 13px;
+        font-size: 12px;
+        padding-left: 10px;
     }
     .bTxs {
-        font-size: 13px;
+        font-size: 12px;
     }
     .bHash {
         font-family: 'CascadiaCode';
         font-weight: 200;
-        font-size: 13px;
+        font-size: 12px;
         padding-top: 24px;
         cursor: pointer;
     }
     .bAge {
         font-weight: 300;
-        font-size: 13;
+        font-size: 12;
         padding-top: 22.5px;
         color: var(--text2);
+    }
+    .input {
+        width: 300px;
+    }
+    .input.active {
+        width: 300px;
+        transform: scale(0.85);
+    }
+    #error {
+        width: 300px;
     }
 }

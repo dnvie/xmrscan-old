@@ -1,5 +1,11 @@
 var hashrate;
+var xmrPrice
 var scrollY = 0;
+var today = new Date()
+var yesterday = new Date(today)
+yesterday.setDate(yesterday.getDate() - 1)
+yesterday = moment().format('DD-MM-YYYY');
+
 $(window).on("load", $('#grid-container').addClass('active'));
 $(window).on("load", setTheme());
 $(".logo").hover(function() {
@@ -10,7 +16,8 @@ $.getJSON(`https://localmonero.co/blocks/api/get_stats`, function(initialize) {
     hashrate = initialize.hashrate;
     Math.trunc(hashrate);
     hashrateMhs = hashrate / 1000000;
-    document.getElementById("hashrate").innerHTML = hashrateMhs.toFixed(2).concat(" Mh/s");
+    //document.getElementById("hashrate").innerHTML = hashrateMhs.toFixed(2).concat(" Mh/s");
+    getXMR();
     const fetchBlocks = async() => {
         for (let i = height; i >= (height - 25); i--) {
             await blockHeight(i);
@@ -245,4 +252,38 @@ if (currentTheme) {
     if (currentTheme === 'dark') {
         toggleSwitch.checked = true;
     }
+}
+
+$(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 30) {
+        $("header").addClass("active");
+        $("#priceInfo").addClass("active");
+        $(".logo").addClass("active");
+        $(".input").addClass("active");
+    } else {
+        $("header").removeClass("active");
+        $("#priceInfo").removeClass("active");
+        $(".logo").removeClass("active");
+        $(".input").removeClass("active");
+    }
+});
+
+function getXMR() {
+    $.getJSON(`https://api.coingecko.com/api/v3/simple/price?ids=monero&vs_currencies=usd`, function(bPrice) {
+        xmrPrice = bPrice.monero.usd;
+        document.getElementById("xmrPrice").innerHTML = xmrPrice + "$";
+        upOrDown();
+    });
+}
+
+function upOrDown() {
+    $.getJSON("https://api.coingecko.com/api/v3/coins/monero/history?date=" + yesterday, function(trend) {
+        if (trend.market_data.current_price.usd <= xmrPrice) {
+            document.getElementById('updown').innerHTML = "<i class=\"fas fa-caret-up\"></i>";
+        } else {
+            document.getElementById('updown').innerHTML = "<i class=\"fas fa-caret-down\"></i>";
+        }
+    });
 }
