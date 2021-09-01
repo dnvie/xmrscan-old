@@ -96,6 +96,7 @@ header {
     position: fixed;
     background: var(--headerBG);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     width: 100%;
     height: 210px;
     top: 0%;
