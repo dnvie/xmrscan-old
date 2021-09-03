@@ -1,5 +1,8 @@
 var hashrate;
+var counter;
 var xmrPrice
+var tempLink;
+var tempString;
 var scrollY = 0;
 var today = new Date()
 var yesterday = new Date(today)
@@ -18,19 +21,37 @@ $.getJSON(`https://localmonero.co/blocks/api/get_stats`, function(initialize) {
     hashrateMhs = hashrate / 1000000;
     //document.getElementById("hashrate").innerHTML = hashrateMhs.toFixed(2).concat(" Mh/s");
     getXMR();
+
+    for (let x = 0; x <= 25; x++) {
+        $("#grid-container").append(`<div id="gridItem1${x}" class="grid-item bHeight"></div>`);
+        $("#grid-container").append(`<div id="gridItem2${x}" class="grid-item bTxs"></div>`);
+        $("#grid-container").append(`<div id="gridItem3${x}" class="grid-item bHash hashHover truncate"></div>`);
+        $("#grid-container").append(`<div id="gridItem4${x}" class="grid-item bAge truncate"></div>`);
+        $(`#gridItem1${x}`).html("<div class=\"heightSkeleton skeletonBase\"></div>");
+        $(`#gridItem2${x}`).html("<div class=\"txSkeleton skeletonBase\"></div>");
+        $(`#gridItem3${x}`).html("<div class=\"hashSkeleton skeletonBase\"></div>");
+        $(`#gridItem4${x}`).html("<div class=\"ageSkeleton skeletonBase\"></div>");
+    }
+
     const fetchBlocks = async() => {
+        counter = 0;
         for (let i = height; i >= (height - 25); i--) {
             await blockHeight(i);
+            counter++;
         }
     };
     const blockHeight = async id => {
         const url = `https://monero.mycryptoapi.com/api/block/${id}`;
         const data = await fetch(url);
         const block = await data.json();
-        $("#grid-container").append(`<div class="grid-item bHeight">${block.data.block_height}</div>`);
-        $("#grid-container").append(`<div class="grid-item bTxs">${(block.data.txs.length) - 1}</div>`);
-        $("#grid-container").append(`<div class="grid-item bHash hashHover truncate"onclick="showBlock('${block.data.hash}');setTimeout(temp, 100);">${block.data.hash}</div>`);
-        $("#grid-container").append(`<div class="grid-item bAge truncate">${moment.unix(block.data.timestamp).startOf('seconds').fromNow()}</div>`);
+
+        $(`#gridItem1${counter}`).html(block.data.block_height);
+        $(`#gridItem2${counter}`).html((block.data.txs.length) - 1);
+        $(`#gridItem3${counter}`).html(block.data.hash);
+        tempLink = $(`#gridItem3${counter}`).html();
+        tempString = "showBlock('" + tempLink + "');setTimeout(temp, 100)"
+        $(`#gridItem3${counter}`).attr("onclick", tempString);
+        $(`#gridItem4${counter}`).html(moment.unix(block.data.timestamp).startOf('seconds').fromNow());
     };
     fetchBlocks();
 });
@@ -99,7 +120,6 @@ function showTx(txInput) {
 }
 
 function temp() {
-    console.log(document.documentElement.getAttribute('data-theme'));
     $('#grid-container').removeClass('active');
     $('#backButton').addClass('active');
     $('#backMobile').addClass('active');
@@ -296,4 +316,12 @@ function upOrDown() {
 
 function setGradientSwitchTimeout() {
     $("#gradient").removeClass("switchTimeout");
+}
+
+function test() {
+    $("#grid-container").append(`<div id="gridItem1${1}" class="grid-item"></div>`);
+    $("#grid-container").append(`<div id="gridItem2${2}" class="grid-item"></div>`);
+    $("#grid-container").append(`<div id="gridItem3${3}" class="grid-item"></div>`);
+    $("#grid-container").append(`<div id="gridItem4${4}" class="grid-item"></div>`);
+    console.log("xd");
 }

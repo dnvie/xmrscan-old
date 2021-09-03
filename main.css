@@ -62,6 +62,7 @@
     --inputHover: rgba(0, 0, 0, 0.062);
     --mobileNavHover: rgba(0, 0, 0, 0.096);
     --inv: black;
+    --skeleton: rgb(225, 225, 225);
 }
 
 [data-theme="dark"] {
@@ -79,6 +80,7 @@
     --inputHover: rgba(0, 0, 0, 0.662);
     --mobileNavHover: rgba(0, 0, 0, 0.336);
     --inv: white;
+    --skeleton: rgb(16, 16, 16);
 }
 
 * {
@@ -88,7 +90,7 @@
 body {
     overflow-x: hidden;
     width: 100%;
-    height: 2050px;
+    height: 2250px;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     background-color: var(--background);
@@ -531,6 +533,62 @@ header.active {
     user-select: none;
 }
 
+.skeletonBase {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: var(--skeleton);
+    animation: shimmer 1.6s infinite;
+}
+
+.heightSkeleton {
+    height: 25px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.txSkeleton {
+    height: 25px;
+    width: 25px;
+    border-radius: 100px;
+    animation-delay: 0.15s;
+}
+
+.hashSkeleton {
+    height: 25px;
+    width: 600px;
+    border-radius: 10px;
+    animation-delay: 0.3s;
+}
+
+.ageSkeleton {
+    height: 25px;
+    width: 100px;
+    border-radius: 10px;
+    animation-delay: 0.45s;
+}
+
+@keyframes shimmer {
+    0% {
+        opacity: 100%;
+    }
+    25% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 30%;
+    }
+    75% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
 #mobileNav {
     position: fixed;
     width: 240px;
@@ -681,6 +739,15 @@ header.active {
     #up {
         width: 80px;
         right: 8%;
+    }
+    .heightSkeleton {
+        width: 80px;
+    }
+    .hashSkeleton {
+        width: 500px;
+    }
+    .ageSkeleton {
+        width: 80px;
     }
 }
 
@@ -863,6 +930,15 @@ header.active {
         right: 0;
         margin: auto;
     }
+    .heightSkeleton {
+        width: 65px;
+    }
+    .hashSkeleton {
+        width: 400px;
+    }
+    .ageSkeleton {
+        width: 60px;
+    }
 }
 
 @media only screen and (max-width: 890px) {
@@ -893,6 +969,15 @@ header.active {
         padding-top: 22.5px;
         color: var(--text2);
     }
+    .heightSkeleton {
+        width: 60px;
+    }
+    .hashSkeleton {
+        width: 250px;
+    }
+    .ageSkeleton {
+        width: 50px;
+    }
 }
 
 @media only screen and (max-width: 625px) {
@@ -904,6 +989,15 @@ header.active {
     }
     #error {
         width: 350px;
+    }
+    .heightSkeleton {
+        width: 60px;
+    }
+    .hashSkeleton {
+        width: 200px;
+    }
+    .ageSkeleton {
+        width: 50px;
     }
 }
 
@@ -944,5 +1038,17 @@ header.active {
     }
     #error {
         width: 300px;
+    }
+    .heightSkeleton {
+        width: 50px;
+    }
+    .hashSkeleton {
+        width: 150px;
+    }
+    .ageSkeleton {
+        width: 45px;
+    }
+    body {
+        height: 2300px;
     }
 }
