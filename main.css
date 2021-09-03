@@ -50,7 +50,8 @@
 :root {
     --background: rgb(244, 244, 244);
     --backgroundInv: rgb(19, 19, 19);
-    --headerBG: rgba(244, 244, 244, 0.5);
+    --headerBG: rgb(244, 244, 244);
+    --headerBGopacity: rgba(244, 244, 244, 0);
     --text: #2e2e2e;
     --text2: #898989;
     --orange: #ff6404;
@@ -66,7 +67,8 @@
 [data-theme="dark"] {
     --background: #141414;
     --backgroundInv: rgb(247, 247, 247);
-    --headerBG: rgba(20, 20, 20, 0.5);
+    --headerBG: rgb(20, 20, 20);
+    --headerBGopacity: rgba(20, 20, 20, 0);
     --text: #b4b4b4;
     --text2: rgb(138, 138, 138);
     --orange: #ff6404;
@@ -95,8 +97,6 @@ body {
 header {
     position: fixed;
     background: var(--headerBG);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     width: 100%;
     height: 210px;
     top: 0%;
@@ -107,6 +107,28 @@ header {
 header.active {
     height: 80px;
     transition: all 0.15s ease-in-out;
+}
+
+#gradient {
+    position: absolute;
+    width: 100%;
+    height: 75px;
+    left: 0;
+    top: 180px;
+    background: linear-gradient(var(--headerBG), var(--headerBGopacity));
+    z-index: 0;
+    transition: background 0.15s ease-in-out;
+}
+
+#gradient.active {
+    top: 80px;
+    transition: background 0.15s ease-in-out;
+}
+
+#gradient.switchTimeout {
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
 }
 
 .logo {
@@ -155,6 +177,7 @@ header.active {
     line-height: 45px;
     opacity: 1;
     background-color: var(--inputBG);
+    z-index: 70;
 }
 
 #priceInfo {

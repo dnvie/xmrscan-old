@@ -238,10 +238,14 @@ function switchTheme() {
     if (document.documentElement.getAttribute('data-theme') == 'dark') {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
+        $("#gradient").addClass("switchTimeout");
+        setTimeout(setGradientSwitchTimeout, 200);
         document.getElementById("themeText").innerHTML = "🌚 Switch Theme";
     } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
+        $("#gradient").addClass("switchTimeout");
+        setTimeout(setGradientSwitchTimeout, 200);
         document.getElementById("themeText").innerHTML = "🌝 Switch Theme";
     }
 }
@@ -262,11 +266,13 @@ $(window).scroll(function() {
         $("#priceInfo").addClass("active");
         $(".logo").addClass("active");
         $(".input").addClass("active");
+        $("#gradient").addClass("active");
     } else {
         $("header").removeClass("active");
         $("#priceInfo").removeClass("active");
         $(".logo").removeClass("active");
         $(".input").removeClass("active");
+        $("#gradient").removeClass("active");
     }
 });
 
@@ -286,4 +292,8 @@ function upOrDown() {
             document.getElementById('updown').innerHTML = "<i class=\"fas fa-caret-down\"></i>";
         }
     });
+}
+
+function setGradientSwitchTimeout() {
+    $("#gradient").removeClass("switchTimeout");
 }
