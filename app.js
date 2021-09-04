@@ -317,11 +317,3 @@ function upOrDown() {
 function setGradientSwitchTimeout() {
     $("#gradient").removeClass("switchTimeout");
 }
-
-function test() {
-    $("#grid-container").append(`<div id="gridItem1${1}" class="grid-item"></div>`);
-    $("#grid-container").append(`<div id="gridItem2${2}" class="grid-item"></div>`);
-    $("#grid-container").append(`<div id="gridItem3${3}" class="grid-item"></div>`);
-    $("#grid-container").append(`<div id="gridItem4${4}" class="grid-item"></div>`);
-    console.log("xd");
-}
