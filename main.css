@@ -369,12 +369,14 @@ header.active {
     z-index: 52;
     opacity: 0;
     user-select: none;
+    pointer-events: none;
 }
 
 #backButton.active {
     left: 12%;
     opacity: 1;
     user-select: initial;
+    pointer-events: initial;
     cursor: pointer;
 }
 
@@ -409,12 +411,14 @@ header.active {
     z-index: 53;
     opacity: 0;
     user-select: none;
+    pointer-events: none;
 }
 
 #homeButton.active {
     left: 12%;
     opacity: 1;
     user-select: initial;
+    pointer-events: initial;
     cursor: pointer;
 }
 
