@@ -21,6 +21,7 @@ $.getJSON(`https://localmonero.co/blocks/api/get_stats`, function(initialize) {
     hashrateMhs = hashrate / 1000000;
     //document.getElementById("hashrate").innerHTML = hashrateMhs.toFixed(2).concat(" Mh/s");
     getXMR();
+    setInterval(getXMR, 10000);
 
     for (let x = 0; x <= 25; x++) {
         $("#grid-container").append(`<div id="gridItem1${x}" class="grid-item bHeight"></div>`);
