@@ -198,12 +198,12 @@ $(window).scroll(function() {
     var buttonTop = style.top;
     var homeTop = style.top;
     var currentPos = window.pageYOffset;
-    if (currentPos < 120) {
+    if (currentPos < 30) {
         backButton.style.top = "266px";
         homeButton.style.top = "336px";
     } else {
-        backButton.style.top = "50px";
-        homeButton.style.top = "120px";
+        backButton.style.top = "150px";
+        homeButton.style.top = "220px";
     }
 });
 
