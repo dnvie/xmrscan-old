@@ -1,4 +1,3 @@
-//Global Variables
 var topOfPageTx = false;
 var topOfPageDetails = false;
 var onMain = true;
