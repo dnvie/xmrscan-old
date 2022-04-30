@@ -620,15 +620,15 @@ input::selection {
 @media only screen and (max-width: 1200px) {
     .blockPopUp {
         width: clamp(650px, 85%, 1700px);
-        height: clamp(80vh, 1500px, 85vh);
+        height: clamp(83vh, 1500px, 88vh);
     }
     .txPopUp {
         width: clamp(650px, 85%, 1700px);
-        height: clamp(75vh, 1500px, 80vh);
+        height: clamp(78vh, 1500px, 83vh);
     }
     .detailsPopUp {
         width: clamp(650px, 85%, 1700px);
-        height: clamp(70vh, 1500px, 75vh);
+        height: clamp(73vh, 1500px, 78vh);
     }
     .bHeight {
         font-size: 18px;
