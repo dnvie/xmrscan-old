@@ -1,0 +1,125 @@
+<html>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="robots" content="noodp,noydir" />
+<title>Monero Block Explorer - xmrscan.com</title>
+<meta name="description" content="Explore Blocks and Transactions on the Monero Blockchain">
+<meta name="keywords" content="Monero, XMR, Tracker, Scanner, Explorer, Blockchain, Transaction, xmrscan, moneroscan">
+<meta name="author" content="dnvie">
+<meta property="og:title" content="Monero Block Explorer - xmrscan.com" />
+<meta property="og:description" content="Explore Blocks and Transactions on the Monero Blockchain">
+<meta property="og:type" content="website">
+<meta property=“og:site_name“ content=“xmrscan“>
+<meta property=“og:image“ content=“Assets/ogimage.png“>
+<meta property=“og:image:secure_url“ content=“Assets/ogimage.png“>
+<meta name="msvalidate.01" content="94EA594C355B94E08BCC683DC45B498A" />
+<meta name="yandex-verification" content="b0034d73b4c63098" />
+<link rel="apple-touch-icon" sizes="180x180" href="Assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="Assets/favicon-16x16.png">
+<link rel="manifest" href="Assets/site.webmanifest">
+<link rel="mask-icon" href="Assets/safari-pinned-tab.svg" color="#f16924">
+<link rel="shortcut icon" href="Assets/favicon.ico">
+<meta name="msapplication-TileColor" content="#f16924">
+<meta name="msapplication-config" content="Assets/browserconfig.xml">
+<link rel="stylesheet" href="block.css">
+<link rel="stylesheet" href="tx.css">
+<link rel="stylesheet" href="details.css">
+<link rel="stylesheet" href="colors.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://kit.fontawesome.com/3e92d3f9e5.js" crossorigin="anonymous"></script>
+
+<body onload="removeSearch()">
+
+    <div class="frame" onclick="removeSearchBar()">
+        <img class="logo" id="logo" src="Assets/Logo.svg" onclick="transition();">
+        <div id="priceInfo" class="infoBox">
+            Monero Price:&nbsp; <span id="xmrPrice"></span>&nbsp;&nbsp;<span id="updown"></span>
+        </div>
+        <img class="logo" id="logoC" src="Assets/LogoCompact.svg" onclick="transition();">
+        <div id="priceInfo2" class="infoBox2">
+            <span id="xmrPrice2"></span>&nbsp;<span id="updown2"></span>
+        </div>
+    </div>
+
+    <div class="blockPopUp">
+        <div class="grid-container-header">
+            <div class="grid-container-header-item">Height</div>
+            <div class="grid-container-header-item">Txs</div>
+            <div class="grid-container-header-item" id="blockSearch" onclick="addSearchBar()">
+                Block Hash
+            </div>
+            <div class="grid-container-header-item">Age</div>
+        </div>
+        <div class="blockPopUpHeader"></div>
+        <div id="grid-container" class="grid-container">
+        </div>
+    </div>
+
+    <div class="txPopUp" onclick="removeDetails()">
+        <div class="txHeader">
+            <div id="grid-item-block-Block" class="tx-h-grid-item tx-h-block"></div>
+            <div id="grid-item-block-Hash" class="tx-h-grid-item tx-h-hash"></div>
+        </div>
+        <div class="txPopUpHeader"></div>
+        <div class="txHeader-info">
+            <div id="txSize" class="txInfo-grid-item">Size:</div>
+            <div id="grid-item-block-SizekB" class="txInfo-grid-item"></div>
+            <div class="txInfo-grid-item">Block Reward:</div>
+            <div id="grid-item-block-RewardAmount" class="txInfo-grid-item"></div>
+            <div class="txInfo-grid-item">Coinbase Tx:</div>
+            <div id="grid-item-block-CBHash" class="txInfo-grid-item txInfo-hash"></div>
+        </div>
+        <div id="grid-item-block-Transactions" class="txCount">10 Transactions:</div>
+        <div class="tx-grid">
+            <div class="tx-grid-item tx-grid-hash">Hash:</div>
+            <div class="tx-grid-item tx-grid-size">Size:</div>
+            <div class="tx-grid-item tx-grid-hash" onclick="detailsPopUpHelper()"></div>
+            <div class="tx-grid-item tx-grid-size"></div>
+        </div>
+        <div class="txBackground" onclick="removeTxHelper()"></div>
+    </div>
+
+    <div class="detailsPopUp">
+        <div class="detailsBackground" onclick="removeDetailsHelper()"></div>
+        <div class="detailsHeader">
+            <div class="details-h-grid-item details-h-tx">Transaction Details:</div>
+            <div id="txDate" class="details-h-grid-item details-h-date"></div>
+        </div>
+        <div class="detailsHeader-info">
+            <div id="detailsHash" class="detailsInfo-grid-item">Hash:</div>
+            <div id="txHash" class="detailsInfo-grid-item detailsInfo-hash truncate"></div>
+            <div class="detailsInfo-grid-item">Extra:</div>
+            <div id="txExtra" class="detailsInfo-grid-item detailsInfo-hash truncate"></div>
+            <div class="detailsInfo-grid-item">Fee/Size:</div>
+            <div id="txFee" class="detailsInfo-grid-item truncate"></div>
+            <div class="detailsInfo-grid-item ">Block:</div>
+            <div id="txBlock" class="detailsInfo-grid-item truncate"></div>
+            <div class="detailsInfo-grid-item">Ring Size:</div>
+            <div id="txRing" class="detailsInfo-grid-item truncate"></div>
+            <div class="detailsInfo-grid-item">Confirmations:</div>
+            <div id="txConf" class="detailsInfo-grid-item truncate"></div>
+        </div>
+        <div class="inputsOutputs">Inputs/Outputs:</div>
+        <div class="details-grid">
+            <div class="details-grid-item details-grid-item-header">Key Image:</div>
+        </div>
+    </div>
+    <div class="searchContainer" onclick="removeAll()"></div>
+    <div class="transition"></div>
+    <div class="warningPopUp" id="warningBar">
+        <div class="warning-container-header" id="searchBarHeader">
+            <div class="warning-container-header-item" id="warningBarItem">Please check your input!</div>
+        </div>
+
+</body>
+
+<script type="text/javascript" src="app.js"></script>
+
+</html>

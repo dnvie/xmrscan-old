@@ -1,0 +1,44 @@
+:root {
+    --background: #141414;
+    --backgroundInv: rgb(247, 247, 247);
+    --headerBG: rgb(20, 20, 20);
+    --headerBGopacity: rgba(20, 20, 20, 0);
+    --text: #b4b4b4;
+    --text2: rgb(138, 138, 138);
+    --orange: #ff6404;
+    --lightorange: #2C1C12;
+    --containerBG: #1B1B1B;
+    --buttonHoverBG: #2c1c1254;
+    --inputBG: rgba(0, 0, 0, 0.301);
+    --inputHover: rgba(0, 0, 0, 0.662);
+    --mobileNavHover: rgba(0, 0, 0, 0.336);
+    --inv: white;
+    --skeleton: rgb(16, 16, 16);
+    --scrollbar: rgb(41, 41, 41);
+    --scrollbarHover: rgb(60, 60, 60);
+}
+
+[data-theme="dark"] {
+    --background: rgb(244, 244, 244);
+    --backgroundInv: rgb(19, 19, 19);
+    --text: #2e2e2e;
+    --text2: #898989;
+    --orange: #ff6404;
+    --lightorange: #ffece4;
+    --containerBG: rgb(255, 255, 255);
+    --containerBGOpacity: rgba(255, 255, 255, 0);
+    --buttonHoverBG: #ffece488;
+    --inputBG: #ffffff;
+    --inputHover: rgba(0, 0, 0, 0.062);
+    --mobileNavHover: rgba(0, 0, 0, 0.096);
+    --inv: black;
+    --skeleton: rgb(225, 225, 225);
+    --scrollbar: #e8e8e8;
+}
+
+@font-face {
+    font-family: 'CascadiaCode';
+    src: url("Assets/Fonts/CascadiaCodePL-SemiLight.otf");
+    font-style: normal;
+    font-weight: 200;
+}

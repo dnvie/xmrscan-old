@@ -1,0 +1,261 @@
+.detailsBackground {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.detailsBackground.active {
+    user-select: all;
+    pointer-events: initial;
+}
+
+.detailsHeader {
+    position: sticky;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: var(--lightorange);
+    height: 70px;
+    display: grid;
+    grid-template-columns: 75% 25%;
+    z-index: 5;
+}
+
+.details-h-grid-item {
+    font-weight: 500;
+    font-family: 'Archivo';
+    line-height: 70px;
+    color: var(--orange);
+}
+
+.details-h-tx {
+    padding-left: 40px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.details-h-date {
+    text-align: right;
+    padding-right: 40px;
+}
+
+.detailsHeader:nth-child(2) {
+    border-radius: 20px 20px 0 0;
+}
+
+.detailsHeader-info {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 70px;
+    background-color: var(--containerBG);
+    height: 70px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+.detailsInfo-grid-item {
+    font-weight: 500;
+    font-family: 'Archivo';
+    line-height: 70px;
+    color: var(--text);
+    height: 60px;
+    padding-left: 40px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.detailsInfo-hash {
+    font-size: 16px;
+    font-weight: 200;
+    font-family: 'CascadiaCode'
+}
+
+.inputsOutputs {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 70px;
+    top: 470px;
+    background-color: var(--orange);
+    color: white;
+    border-radius: 20px 20px 0 0;
+    text-indent: 40px;
+    text-align: left;
+    line-height: 40px;
+    font-weight: 400;
+    font-family: 'Archivo';
+    font-size: 18px;
+}
+
+.details-grid {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 510px;
+    background-color: var(--containerBG);
+    height: 70px;
+    display: grid;
+    grid-template-columns: 100%;
+    border-radius: 20px 20px 0 0;
+}
+
+.details-grid-item {
+    line-height: 70px;
+    height: 70px;
+}
+
+.details-grid-item-header {
+    font-weight: 500;
+    font-family: 'Archivo';
+    font-size: 20px;
+    color: var(--orange);
+    padding-left: 40px;
+    border-radius: 20px 20px 0 0;
+    background-color: var(--containerBG);
+}
+
+.details-grid-hash {
+    padding-left: 40px;
+    font-family: 'CascadiaCode';
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+
+/* Responsive Resolutions*/
+
+@media only screen and (max-width: 1530px) {}
+
+@media only screen and (max-width: 1200px) {
+    .detailsHeader-info {
+        grid-template-columns: 20% 80%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .detailsHeader-info {
+        grid-template-columns: 25% 75%;
+    }
+    #txHash {
+        font-size: 14px;
+    }
+    #txExtra {
+        font-size: 14px;
+    }
+    .detailsHeader {
+        grid-template-columns: 50% 50%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .detailsHeader-info {
+        grid-template-columns: 35% 65%;
+    }
+    .detailsHeader {
+        grid-template-columns: 55% 45%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .detailsHeader-info {
+        grid-template-columns: 35% 65%;
+    }
+    .detailsHeader {
+        grid-template-columns: 60% 40%;
+    }
+    .detailsInfo-grid-item {
+        font-size: 14px;
+    }
+    .details-h-grid-item {
+        font-size: 16px;
+    }
+    .inputsOutputs {
+        font-size: 16px;
+    }
+    .details-grid-item-header {
+        font-size: 16px;
+    }
+    .txEntry {
+        font-size: 12px;
+    }
+    #txDate {
+        font-size: 12px;
+    }
+    #txHash {
+        margin-left: -20px;
+    }
+    #txExtra {
+        margin-left: -20px;
+    }
+    #txFee {
+        margin-left: -20px;
+    }
+    #txBlock {
+        margin-left: -20px;
+    }
+    #txRing {
+        margin-left: -20px;
+    }
+    #txConf {
+        margin-left: -20px;
+    }
+    .detailsEntry {
+        font-size: 14px;
+    }
+}
+
+
+/* 4k */
+
+@media only screen and (min-width: 2700px) {
+    .detailsHeader {
+        height: 90px;
+    }
+    .details-h-grid-item {
+        line-height: 90px;
+    }
+    .details-h-tx {
+        font-size: 24px;
+    }
+    .details-h-date {
+        font-size: 20px;
+    }
+    .detailsHeader-info {
+        top: 90px;
+        height: 90px;
+    }
+    .detailsInfo-grid-item {
+        line-height: 90px;
+        height: 90px;
+        font-size: 24px;
+    }
+    .inputsOutputs {
+        height: 90px;
+        top: 660px;
+        line-height: 50px;
+        font-size: 22px;
+    }
+    .details-grid {
+        top: 710px;
+        height: 90px;
+    }
+    .details-grid-item {
+        line-height: 90px;
+        height: 90px;
+    }
+    .details-grid-item-header {
+        font-size: 24px;
+    }
+    .details-grid-hash {
+        font-size: 21px;
+    }
+}

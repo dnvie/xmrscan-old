@@ -1,0 +1,309 @@
+.txHeader {
+    position: sticky;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: var(--lightorange);
+    height: 70px;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    z-index: 5;
+}
+
+.tx-h-grid-item {
+    font-weight: 500;
+    font-family: 'Archivo';
+    line-height: 70px;
+    color: var(--orange);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tx-h-block {
+    padding-left: 40px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.tx-h-hash {
+    font-family: 'CascadiaCode';
+    font-size: 16px;
+    text-align: right;
+    padding-right: 40px;
+}
+
+.txHeader:nth-child(1) {
+    border-radius: 20px 20px 0 0;
+}
+
+.txPopUpHeader {
+    position: sticky;
+    z-index: 2;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 32px;
+    margin: 0 auto;
+    background: linear-gradient(var(--containerBG), var(--containerBGOpacity));
+    z-index: 4;
+    pointer-events: none;
+    user-select: none;
+}
+
+.txHeader-info {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 70px;
+    background-color: var(--containerBG);
+    height: 70px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.txInfo-grid-item {
+    font-weight: 500;
+    font-family: 'Archivo';
+    line-height: 70px;
+    color: var(--text);
+    height: 60px;
+    padding-left: 40px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.txInfo-hash {
+    font-size: 16px;
+    font-weight: 200;
+    font-family: 'CascadiaCode';
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.txCount {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 70px;
+    top: 300px;
+    background-color: var(--orange);
+    color: white;
+    border-radius: 20px 20px 0 0;
+    text-indent: 40px;
+    text-align: left;
+    line-height: 40px;
+    font-weight: 400;
+    font-family: 'Archivo';
+    font-size: 18px;
+}
+
+.tx-grid {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 340px;
+    background-color: var(--lightorange);
+    height: 70px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    border-radius: 20px 20px 0 0;
+}
+
+.tx-grid-item {
+    line-height: 70px;
+}
+
+.tx-grid-item:nth-child(1) {
+    font-weight: 500;
+    font-family: 'Archivo';
+    font-size: 20px;
+    color: var(--orange);
+}
+
+.tx-grid-item:nth-child(2) {
+    font-weight: 500;
+    font-family: 'Archivo';
+    font-size: 20px;
+    color: var(--orange);
+}
+
+.tx-grid-hash {
+    padding-left: 40px;
+    font-family: 'CascadiaCode';
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.tx-grid-hash:hover {
+    color: var(--orange);
+    cursor: pointer;
+}
+
+.tx-grid-size {
+    font-weight: 500;
+    font-family: 'Archivo';
+    font-size: 18px;
+    color: var(--text);
+}
+
+.txBackground {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.txBackground.active {
+    user-select: all;
+    pointer-events: initial;
+}
+
+
+/* Responsive Resolutions*/
+
+@media only screen and (max-width: 1530px) {
+    .tx-grid-hash {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .tx-grid-hash {
+        font-size: 14px;
+    }
+    #grid-item-block-Block {
+        font-size: 18px;
+    }
+    .txHeader {
+        grid-template-columns: 35% 65%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .txHeader-info {
+        grid-template-columns: 25% 75%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .tx-grid-size {
+        padding-left: 15px;
+    }
+    .txHeader-info {
+        grid-template-columns: 35% 65%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .txInfo-grid-item {
+        font-size: 16px;
+    }
+    .txHeader-info {
+        grid-template-columns: 40% 60%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #grid-item-block-Transactions {
+        font-size: 16px;
+    }
+    .tx-grid-size {
+        font-size: 14px;
+        padding-left: 25px;
+    }
+    .tx-grid-item:nth-child(1) {
+        font-size: 16px;
+    }
+    .tx-grid-item:nth-child(2) {
+        font-size: 16px;
+    }
+    .tx-grid {
+        grid-template-columns: 70% 30%;
+    }
+    .txInfo-grid-item {
+        font-size: 14px;
+    }
+    .txHeader {
+        grid-template-columns: 50% 50%;
+    }
+    #grid-item-block-Hash {
+        font-size: 12px;
+    }
+    #grid-item-block-Block {
+        font-size: 16px;
+    }
+    .txHeader-info {
+        grid-template-columns: 35% 65%;
+    }
+    #grid-item-block-SizekB {
+        margin-left: -15px;
+    }
+    #grid-item-block-RewardAmount {
+        margin-left: -15px;
+    }
+    #grid-item-block-CBHash {
+        margin-left: -15px;
+    }
+}
+
+
+/* 4k */
+
+@media only screen and (min-width: 2700px) {
+    .txHeader {
+        height: 90px;
+    }
+    .tx-h-grid-item {
+        line-height: 90px;
+    }
+    .tx-h-block {
+        font-size: 24px;
+    }
+    .tx-h-hash {
+        font-size: 20px;
+    }
+    .txHeader-info {
+        top: 90px;
+        height: 100px;
+    }
+    .txInfo-grid-item {
+        line-height: 80px;
+        height: 80px;
+        font-size: 22px;
+    }
+    .tx-grid {
+        top: 410px;
+        height: 90px;
+    }
+    .tx-grid-item {
+        line-height: 90px;
+    }
+    .tx-grid-item:nth-child(1) {
+        font-size: 24px;
+    }
+    .tx-grid-item:nth-child(2) {
+        font-size: 24px;
+    }
+    .tx-grid-hash {
+        font-size: 20px;
+    }
+    .tx-grid-size {
+        font-size: 22px;
+    }
+    .txCount {
+        height: 90px;
+        top: 360px;
+        line-height: 50px;
+        font-size: 22px;
+    }
+}
