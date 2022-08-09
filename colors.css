@@ -16,8 +16,8 @@
     --skeleton: rgb(16, 16, 16);
     --scrollbar: rgb(41, 41, 41);
     --scrollbarHover: rgb(60, 60, 60);
-    --subheaderBG: #ff6404;
-    --subheaderText: white;
+    --subheaderBG: #1c140f;
+    --subheaderText: #ff6404;
 }
 
 [data-theme="dark"] {
@@ -36,8 +36,8 @@
     --inv: black;
     --skeleton: rgb(225, 225, 225);
     --scrollbar: #e8e8e8;
-    --subheaderBG: #1c140f;
-    --subheaderText: #ff6404;
+    --subheaderBG: #ff6404;
+    --subheaderText: white;
 }
 
 @font-face {
