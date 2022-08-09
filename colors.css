@@ -17,6 +17,7 @@
     --scrollbar: rgb(41, 41, 41);
     --scrollbarHover: rgb(60, 60, 60);
     --subheaderBG: #1c140f;
+    --subheaderBG2: #2C1C12;
     --subheaderText: #ff6404;
 }
 
@@ -37,6 +38,7 @@
     --skeleton: rgb(225, 225, 225);
     --scrollbar: #e8e8e8;
     --subheaderBG: #ff6404;
+    --subheaderBG2: #ff6404;
     --subheaderText: white;
 }
 
