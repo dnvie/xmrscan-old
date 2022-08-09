@@ -83,8 +83,8 @@
     left: 0;
     height: 70px;
     top: 470px;
-    background-color: var(--orange);
-    color: white;
+    background-color: var(--subheaderBG);
+    color: var(--subheaderText);
     border-radius: 20px 20px 0 0;
     text-indent: 40px;
     text-align: left;
