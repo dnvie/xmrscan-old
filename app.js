@@ -5,7 +5,10 @@ var onMain = true;
 function txPopUp() {
     $('.txPopUp').addClass('active');
     $('.blockPopUp').addClass('unfocused');
+    $('.progressBarBlock').addClass('unfocused');
     $('.txBackground').addClass('active');
+    $('.progressBarTx').addClass('active');
+    document.getElementById("progressBarTxHeader").style.width = 0 + "%";
     topOfPageTx = true;
     onMain = false;
 };
@@ -15,8 +18,11 @@ function detailsPopUp() {
     $('.detailsPopUp').addClass('active');
     $('.txPopUp').addClass('active');
     $('.blockPopUp').addClass('unfocusedAgain');
+    $('.progressBarBlock').addClass('unfocusedAgain');
     $('.txPopUp').addClass('unfocused');
     $('.detailsBackground').addClass('active');
+    $('.progressBarTx').addClass('unfocused');
+    $('.progressBarDetails').addClass('active');
     setTimeout(removeUnfocusableTx, 200);
     topOfPageDetails = true;
     onMain = false;
@@ -27,9 +33,13 @@ function removeDetails() {
     $('.txPopUp').addClass('active');
     $('.txPopUp').removeClass('unfocused');
     $('.blockPopUp').removeClass('unfocusedAgain');
+    $('.progressBarBlock').removeClass('unfocusedAgain');
     $('.blockPopUp').addClass('unfocused');
     $('.detailsBackground').removeClass('active');
     $('.detailsEntry').remove();
+    $('.progressBarTx').removeClass('unfocused');
+    $('.progressBarDetails').removeClass('active');
+    document.getElementById("progressBarDetailsHeader").style.width = 0 + "%";
     onMain = false;
 }
 
@@ -39,6 +49,8 @@ function removeTx() {
     $('.mainText').removeClass('active');
     $('.txBackground').removeClass('active');
     $('.txEntry').remove();
+    $('.progressBarBlock').removeClass('unfocused');
+    $('.progressBarTx').removeClass('active');
     onMain = true;
 }
 
@@ -91,6 +103,10 @@ function resetInactive() {
 
 function removeSC() {
     $('.searchContainer').removeClass('active');
+}
+
+function test() {
+    $('.errormsg').toggleClass('active');
 }
 
 function getXMR() {
@@ -381,3 +397,24 @@ function warningHelper() {
 function warningHelper2() {
     $('.warning-container-header').removeClass('active2');
 }
+
+function scrollProgressBlock() {
+    var winScroll = document.getElementById("blockPopUp").scrollTop;
+    var height = document.getElementById("blockPopUp").scrollHeight - document.getElementById("blockPopUp").clientHeight;
+    var scrolled = (winScroll / height) * 100 * 1;
+    document.getElementById("progressBarBlockHeader").style.width = scrolled + "%";
+  }
+
+  function scrollProgressTx() {
+    var winScroll = document.getElementById("txPopUp").scrollTop;
+    var height = document.getElementById("txPopUp").scrollHeight - document.getElementById("txPopUp").clientHeight;
+    var scrolled = (winScroll / height) * 100 * 1;
+    document.getElementById("progressBarTxHeader").style.width = scrolled + "%";
+  }
+
+  function scrollProgressDetails() {
+    var winScroll = document.getElementById("detailsPopUp").scrollTop;
+    var height = document.getElementById("detailsPopUp").scrollHeight - document.getElementById("detailsPopUp").clientHeight;
+    var scrolled = (winScroll / height) * 100 * 1;
+    document.getElementById("progressBarDetailsHeader").style.width = scrolled + "%";
+  }

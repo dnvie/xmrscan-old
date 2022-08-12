@@ -49,7 +49,7 @@ body.transitioning {
     position: absolute;
     background-color: var(--containerBG);
     width: clamp(650px, 60%, 1700px);
-    height: clamp(90vh, 1500px, 95vh);
+    height: clamp(85vh, 1500px, 90vh);
     bottom: 0;
     left: 0;
     right: 0;
@@ -64,14 +64,14 @@ body.transitioning {
 .blockPopUp.unfocused {
     user-select: none;
     cursor: pointer;
-    transform: scale(0.95);
+    transform: scale(0.95) translateY(-2.4vh);
     filter: grayscale() brightness(0.95);
     transition: all 0.3s;
     animation-timing-function: cubic-bezier(.24, 0, .37, 1);
 }
 
 .blockPopUp.unfocusedAgain {
-    transform: scale(0.9);
+    transform: scale(0.9) translateY(-4.8vh);
     filter: grayscale() brightness(0.9);
     transition: all 0.3s;
     animation-timing-function: cubic-bezier(.24, 0, .37, 1);
@@ -81,7 +81,7 @@ body.transitioning {
     position: absolute;
     background-color: var(--containerBG);
     width: clamp(650px, 60%, 1700px);
-    height: clamp(85vh, 1500px, 90vh);
+    height: clamp(82.4vh, 1500px, 87.4vh);
     bottom: -1500px;
     left: 0;
     right: 0;
@@ -95,13 +95,13 @@ body.transitioning {
 }
 
 .txPopUp.active {
-    bottom: 0px;
+    bottom: 0;
     transition: all 0.3s;
     animation-timing-function: cubic-bezier(.24, 0, .37, 1);
 }
 
 .txPopUp.unfocused {
-    transform: scale(0.95);
+    transform: scale(0.95) translateY(-2.4vh);
     filter: grayscale() brightness(0.95);
     transition: all 0.3s;
     animation-timing-function: cubic-bezier(.24, 0, .37, 1);
@@ -116,7 +116,7 @@ body.transitioning {
     position: absolute;
     background-color: var(--containerBG);
     width: clamp(650px, 60%, 1700px);
-    height: clamp(75vh, 1500px, 85vh);
+    height: clamp(79.8vh, 1700px, 84.8vh);
     bottom: -1500px;
     left: 0;
     right: 0;
@@ -130,7 +130,7 @@ body.transitioning {
 }
 
 .detailsPopUp.active {
-    bottom: 0px;
+    bottom: 0;
     transition: all 0.3s;
     animation-timing-function: cubic-bezier(.24, 0, .37, 1);
     z-index: 5;
@@ -143,9 +143,9 @@ body.transitioning {
     left: 0;
     right: 0;
     width: 100%;
-    height: 42px;
+    height: 20px;
     margin: 0 auto;
-    background: linear-gradient(var(--containerBG), var(--containerBGOpacity));
+    background: linear-gradient(var(--containerBG), rgba(0, 0, 0, 0));
     z-index: 3;
     pointer-events: none;
     user-select: none;
@@ -292,15 +292,6 @@ body.transitioning {
     user-select: none;
 }
 
-#blockSearch {
-    cursor: pointer;
-}
-
-#blockSearch:hover .fa-search {
-    transition: all 0.2s;
-    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
-}
-
 .input {
     position: absolute;
     height: 100%;
@@ -354,11 +345,11 @@ input::selection {
 
 .frame {
     position: absolute;
-    height: clamp(90vh, 1500px, 95vh);
+    height: clamp(85vh, 1500px, 90vh);
     width: 100%;
     bottom: 0;
     left: 0;
-    background-color: transparent;
+    background-color: var(--background);
     z-index: 0;
     transition: all 0.3s;
     animation-timing-function: cubic-bezier(.24, 0, .37, 1);
@@ -415,10 +406,12 @@ input::selection {
     position: absolute;
     height: 40px;
     z-index: 70;
-    top: 14px;
     left: 50px;
-    margin: auto;
-    transform: scale(0.95);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%) scale(0.95);
     cursor: pointer;
 }
 
@@ -430,8 +423,11 @@ input::selection {
     position: absolute;
     width: 230px;
     height: 45px;
-    top: 14px;
-    margin: auto;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
     font-size: 16px;
     font-family: 'Archivo';
     font-weight: 500;
@@ -471,7 +467,7 @@ input::selection {
     position: absolute;
     width: 100px;
     height: 45px;
-    top: 14px;
+    top: -72px;
     margin: auto;
     font-size: 16px;
     font-family: 'Archivo';
@@ -501,11 +497,223 @@ input::selection {
     border-radius: 13px 13px 13px 13px;
 }
 
+#searchBar {
+    width: 34%;
+    height: 50px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: var(--containerBG);
+    border: none;
+    border-radius: 12px;
+    position: absolute;
+    font-family: 'Archivo';
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--textTransparent);
+    text-indent: 15px;
+    opacity: 0.6;
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+    box-shadow: 0px 12px 19px var(--dropShadow);
+}
+
+#searchBar:focus {
+    border: none;
+    outline: none;
+    opacity: 1;
+    box-shadow: 0px 12px 19px var(--dropShadowFocused);
+    color: var(--text);
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+}
+
+#searchBar:hover {
+    opacity: 1;
+    box-shadow: 0px 12px 19px var(--dropShadowFocused);
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+}
+
+.header {
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    height: clamp(5vh, 1500px, 10vh);
+    z-index: 0;
+    top: 0;
+    left: 0;
+}
+
+.progressBarBlock {
+    position: absolute;
+    background-color: transparent;
+    width: clamp(650px, 60%, 1700px);
+    height: clamp(85vh, 1500px, 90vh);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 20px 20px 0 0;
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+    overflow-y: scroll;
+    z-index: 3;
+    display: block;
+    user-select: none !important;
+    pointer-events: none !important;
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+    overflow: hidden;
+}
+
+.progressBarBlock.unfocused {
+    user-select: none;
+    cursor: pointer;
+    transform: scale(0.95) translateY(-2.4vh);
+    filter: grayscale() brightness(0.95);
+    opacity: 0;
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+}
+
+.progressBarBlock.unfocusedAgain {
+    transform: scale(0.9) translateY(-4.8vh);
+    filter: grayscale() brightness(0.9);
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+}
+
+.progressBarBlock-header {
+    position: sticky;
+    width: 0%;
+    height: 70px;
+    left: 0;
+    top: 0px;
+    display: grid;
+    grid-template-columns: 100%;
+    background-color: none;
+    opacity: 0.05;
+    transition-delay: 0.1s;
+    background-color: var(--orange);
+    z-index: 3;
+    transition: all 0.05s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+}
+
+.progressBarTx {
+    position: absolute;
+    background-color: transparent;
+    width: clamp(650px, 60%, 1700px);
+    height: clamp(82.4vh, 1500px, 87.4vh);
+    bottom: -1500;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 20px 20px 0 0;
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+    overflow-y: scroll;
+    z-index: 4;
+    display: block;
+    opacity: 0;
+    user-select: none !important;
+    pointer-events: none !important;
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+    overflow: hidden;
+}
+
+.progressBarTx.active {
+    bottom: 0;
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+    opacity: 0.05;
+}
+
+.progressBarTx.unfocused {
+    user-select: none;
+    cursor: pointer;
+    transform: scale(0.95) translateY(-2.4vh);
+    filter: grayscale() brightness(0.95);
+    opacity: 0;
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+}
+
+.progressBarTx-header {
+    position: sticky;
+    width: 0%;
+    height: 70px;
+    left: 0;
+    top: 0px;
+    display: grid;
+    grid-template-columns: 100%;
+    background-color: none;
+    opacity: 1;
+    transition-delay: 0.1s;
+    background-color: var(--orange);
+    z-index: 3;
+    transition: all 0.05s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+}
+
+.progressBarDetails {
+    position: absolute;
+    background-color: transparent;
+    width: clamp(650px, 60%, 1700px);
+    height: clamp(79.8vh, 1700px, 84.8vh);
+    bottom: -1500px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 20px 20px 0 0;
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+    overflow-y: scroll;
+    z-index: 4;
+    display: block;
+    opacity: 0;
+    user-select: none !important;
+    pointer-events: none !important;
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+    overflow: hidden;
+}
+
+.progressBarDetails.active {
+    bottom: 0;
+    transition: all 0.3s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+    z-index: 5;
+    opacity: 0.05;
+}
+
+.progressBarDetails-header {
+    position: sticky;
+    width: 0%;
+    height: 70px;
+    left: 0;
+    top: 0px;
+    display: grid;
+    grid-template-columns: 100%;
+    background-color: none;
+    opacity: 1;
+    transition-delay: 0.1s;
+    background-color: var(--orange);
+    z-index: 3;
+    transition: all 0.05s;
+    animation-timing-function: cubic-bezier(.24, 0, .37, 1);
+}
+
 .warningPopUp {
     position: absolute;
     background-color: transparent;
     width: clamp(650px, 60%, 1700px);
-    height: clamp(90vh, 1500px, 95vh);
+    height: clamp(85vh, 1500px, 90vh);
     bottom: 0;
     left: 0;
     right: 0;
@@ -593,6 +801,15 @@ input::selection {
     .detailsPopUp {
         width: clamp(650px, 75%, 1700px);
     }
+    .progressBarBlock {
+        width: clamp(650px, 75%, 1700px);
+    }
+    .progressBarTx {
+        width: clamp(650px, 75%, 1700px);
+    }
+    .progressBarDetails {
+        width: clamp(650px, 75%, 1700px);
+    }
     .grid-container-header-item {
         font-size: 20px;
     }
@@ -615,20 +832,32 @@ input::selection {
     .warning-container-header-item {
         font-size: 22px;
     }
+    #searchBar {
+        width: 50%;
+    }
 }
 
 @media only screen and (max-width: 1200px) {
     .blockPopUp {
         width: clamp(650px, 85%, 1700px);
-        height: clamp(83vh, 1500px, 88vh);
+        /*height: clamp(83vh, 1500px, 88vh);*/
     }
     .txPopUp {
         width: clamp(650px, 85%, 1700px);
-        height: clamp(78vh, 1500px, 83vh);
+        /* height: clamp(78vh, 1500px, 83vh);*/
     }
     .detailsPopUp {
         width: clamp(650px, 85%, 1700px);
-        height: clamp(73vh, 1500px, 78vh);
+         /*height: clamp(73vh, 1500px, 78vh);*/
+    }
+    .progressBarBlock {
+        width: clamp(650px, 85%, 1700px);
+    }
+    .progressBarTx {
+        width: clamp(650px, 85%, 1700px);
+    }
+    .progressBarDetails {
+        width: clamp(650px, 85%, 1700px);
     }
     .bHeight {
         font-size: 18px;
@@ -651,6 +880,9 @@ input::selection {
     .warning-container-header-item {
         font-size: 20px;
     }
+    #searchBar {
+        width: 75%;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -668,15 +900,24 @@ input::selection {
 @media only screen and (max-width: 800px) {
     .blockPopUp {
         width: clamp(450px, 95%, 1700px);
-        height: clamp(80vh, 1500px, 85vh);
+        /*height: clamp(80vh, 1500px, 85vh);*/
     }
     .txPopUp {
         width: clamp(450px, 95%, 1700px);
-        height: clamp(75vh, 1500px, 80vh);
+        /*height: clamp(75vh, 1500px, 80vh);*/
     }
     .detailsPopUp {
         width: clamp(450px, 95%, 1700px);
-        height: clamp(70vh, 1500px, 75vh);
+        /*height: clamp(70vh, 1500px, 75vh);*/
+    }
+    .progressBarBlock {
+        width: clamp(450px, 95%, 1700px);
+    }
+    .progressBarTx {
+        width: clamp(450px, 95%, 1700px);
+    }
+    .progressBarDetails {
+        width: clamp(450px, 95%, 1700px);
     }
     .grid-container-header {
         grid-template-columns: 20% 14% 39% 27%;
@@ -696,20 +937,32 @@ input::selection {
     .warning-container-header-item {
         font-size: 18px;
     }
+    #searchBar {
+        width: 80%;
+    }
 }
 
 @media only screen and (max-width: 450px) {
     .blockPopUp {
         width: clamp(300px, 100%, 1700px);
-        height: clamp(80vh, 1500px, 85vh);
+        /*height: clamp(80vh, 1500px, 85vh);*/
     }
     .txPopUp {
         width: clamp(300px, 100%, 1700px);
-        height: clamp(75vh, 1500px, 80vh);
+        /*height: clamp(75vh, 1500px, 80vh);*/
     }
     .detailsPopUp {
         width: clamp(300px, 100%, 1700px);
-        height: clamp(70vh, 1500px, 75vh);
+        /*height: clamp(70vh, 1500px, 75vh);*/
+    }
+    .progressBarBlock {
+        width: clamp(300px, 100%, 1700px);
+    }
+    .progressBarTx {
+        width: clamp(300px, 100%, 1700px);
+    }
+    .progressBarDetails {
+        width: clamp(300px, 100%, 1700px);
     }
     .grid-container-header {
         grid-template-columns: 25% 14% 38% 23%;
@@ -746,6 +999,9 @@ input::selection {
     .warning-container-header-item {
         font-size: 16px;
     }
+    #searchBar {
+        width: 100%;
+    }
 }
 
 
@@ -754,7 +1010,7 @@ input::selection {
 @media only screen and (min-width: 2700px) {
     .blockPopUp {
         width: clamp(650px, 75%, 2200px);
-        height: clamp(90vh, 2500px, 95vh);
+        /*height: clamp(90vh, 2500px, 95vh);*/
     }
     .frame {
         height: clamp(90vh, 2500px, 95vh);
@@ -794,13 +1050,22 @@ input::selection {
     }
     .txPopUp {
         width: clamp(650px, 75%, 2200px);
-        height: clamp(85vh, 2500px, 90vh);
+        /*height: clamp(85vh, 2500px, 90vh);*/
         bottom: -2000px;
     }
     .detailsPopUp {
         width: clamp(650px, 75%, 2200px);
-        height: clamp(75vh, 2500px, 85vh);
+        /*height: clamp(75vh, 2500px, 85vh);*/
         bottom: -2000px;
+    }
+    .progressBarBlock {
+        width: clamp(650px, 75%, 2200px);
+    }
+    .progressBarTx {
+        width: clamp(650px, 75%, 2200px);
+    }
+    .progressBarDetails {
+        width: clamp(650px, 75%, 2200px);
     }
     .logo {
         top: 30px;

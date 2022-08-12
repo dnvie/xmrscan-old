@@ -35,24 +35,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://kit.fontawesome.com/3e92d3f9e5.js" crossorigin="anonymous"></script>
 
-<body onload="removeSearch()">
-
-    <div class="frame" onclick="removeSearchBar()">
+<body>
+    <div class="header" id="header">
         <img class="logo" id="logo" src="Assets/Logo.svg" onclick="transition();">
-        <div id="priceInfo" class="infoBox">
+        <div id="priceInfo" class="infoBox" onclick="test()">
             Monero Price:&nbsp; <span id="xmrPrice"></span>&nbsp;&nbsp;<span id="updown"></span>
         </div>
         <img class="logo" id="logoC" src="Assets/LogoCompact.svg" onclick="transition();">
         <div id="priceInfo2" class="infoBox2">
             <span id="xmrPrice2"></span>&nbsp;<span id="updown2"></span>
         </div>
+        <input class="searchBar truncate" id="searchBar" type="textbox" name="searchFor" placeholder="Search for Blocks or Transactions" onkeydown="search(this)"></input><br>
+    </div>
+    <div class="frame" onclick="removeSearchBar()">
     </div>
 
-    <div class="blockPopUp">
+    <div class="blockPopUp" id="blockPopUp" onscroll="scrollProgressBlock()">
         <div class="grid-container-header">
             <div class="grid-container-header-item">Height</div>
             <div class="grid-container-header-item">Txs</div>
-            <div class="grid-container-header-item" id="blockSearch" onclick="addSearchBar()">
+            <div class="grid-container-header-item">
                 Block Hash
             </div>
             <div class="grid-container-header-item">Age</div>
@@ -62,7 +64,7 @@
         </div>
     </div>
 
-    <div class="txPopUp" onclick="removeDetails()">
+    <div class="txPopUp" id="txPopUp" onclick="removeDetails()" onscroll="scrollProgressTx()">
         <div class="txHeader">
             <div id="grid-item-block-Block" class="tx-h-grid-item tx-h-block"></div>
             <div id="grid-item-block-Hash" class="tx-h-grid-item tx-h-hash"></div>
@@ -86,7 +88,7 @@
         <div class="txBackground" onclick="removeTxHelper()"></div>
     </div>
 
-    <div class="detailsPopUp">
+    <div class="detailsPopUp" id="detailsPopUp" onscroll="scrollProgressDetails()">
         <div class="detailsBackground" onclick="removeDetailsHelper()"></div>
         <div class="detailsHeader">
             <div class="details-h-grid-item details-h-tx">Transaction Details:</div>
@@ -113,6 +115,21 @@
     </div>
     <div class="searchContainer" onclick="removeAll()"></div>
     <div class="transition"></div>
+    <div class="progressBarBlock" id="progressBarBlock">
+        <div class="progressBarBlock-header" id="progressBarBlockHeader">
+            <div class=progressBarBlock-header-item" id="progressBarBlockItem"></div>
+        </div>
+    </div>
+    <div class="progressBarTx" id="progressBarTx">
+        <div class="progressBarTx-header" id="progressBarTxHeader">
+            <div class=progressBarTx-header-item" id="progressBarTxItem"></div>
+        </div>
+    </div>
+    <div class="progressBarDetails" id="progressBarDetails">
+        <div class="progressBarDetails-header" id="progressBarDetailsHeader">
+            <div class=progressBarDetails-header-item" id="progressBarDetailsItem"></div>
+        </div>
+    </div>
     <div class="warningPopUp" id="warningBar">
         <div class="warning-container-header" id="searchBarHeader">
             <div class="warning-container-header-item" id="warningBarItem">Please check your input!</div>

@@ -4,6 +4,7 @@
     --headerBG: rgb(20, 20, 20);
     --headerBGopacity: rgba(20, 20, 20, 0);
     --text: #b4b4b4;
+    --textTransparent: #b4b4b475;
     --text2: rgb(138, 138, 138);
     --orange: #ff6404;
     --lightorange: #2C1C12;
@@ -19,12 +20,15 @@
     --subheaderBG: #1c140f;
     --subheaderBG2: #2C1C12;
     --subheaderText: #ff6404;
+    --dropShadow: #00000033;
+    --dropShadowFocused: #00000053;
 }
 
 [data-theme="dark"] {
     --background: rgb(244, 244, 244);
     --backgroundInv: rgb(19, 19, 19);
     --text: #2e2e2e;
+    --textTransparent: #2e2e2e75;
     --text2: #898989;
     --orange: #ff6404;
     --lightorange: #ffece4;
@@ -40,6 +44,8 @@
     --subheaderBG: #ff6404;
     --subheaderBG2: #ff6404;
     --subheaderText: white;
+    --dropShadow: #00000013;
+    --dropShadowFocused: #00000023;
 }
 
 @font-face {
