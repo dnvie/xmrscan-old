@@ -118,7 +118,7 @@ $.getJSON(`https://xmrchain.net/api/networkinfo`, function(initialize) {
     getXMR();
     setInterval(getXMR, 10000);
 
-    for (let x = 0; x <= 25; x++) {
+    for (let x = 0; x <= 50; x++) {
         $(".grid-container").append(`<div id="gridItem1${x}" class="blur grid-item bHeight mainText"></div>`);
         $("#grid-container").append(`<div id="gridItem2${x}" class="blur grid-item bTxs mainText"></div>`);
         $("#grid-container").append(`<div id="gridItem3${x}" class="blur grid-item bHash hashHover truncate mainText"></div>`);
@@ -131,7 +131,7 @@ $.getJSON(`https://xmrchain.net/api/networkinfo`, function(initialize) {
 
     const fetchBlocks = async() => {
         counter = 0;
-        for (let i = height; i >= (height - 25); i--) {
+        for (let i = height; i >= (height - 50); i--) {
             await blockHeight(i);
             counter++;
         }
