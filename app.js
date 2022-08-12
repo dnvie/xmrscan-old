@@ -78,36 +78,11 @@ function removeDetailsHelper() {
     setTimeout(removeDetails, 1);
 }
 
-function addSearchBar() {
-    setTimeout(addSearch, 1);
-}
-
-function removeSearchBar() {
-    setTimeout(removeSearch, 1);
-    $('#blockSearch').attr("onclick", "addSearch()");
-}
-
-function addSearch() {
-    $('#blockSearch').html("<input class=\"grid-container-header-item2 truncate\" type=\"textbox\" name=\"searchFor\" placeholder=\"Search for Blocks or Transactions\" onkeydown=\"search(this)\" id=\"searchBar\"></input><br>");
-    $('#blockSearch').attr("onclick", "");
-    $('#searchBar').focus();
-}
-
-function removeSearch() {
-    $('#blockSearch').html("Block Hash &nbsp; <i class=\"fas fa-search\"></i>");
-}
 
 function resetInactive() {
     $('.detailsBackground').removeClass('inactive');
 }
 
-function removeSC() {
-    $('.searchContainer').removeClass('active');
-}
-
-function test() {
-    $('.errormsg').toggleClass('active');
-}
 
 function getXMR() {
     $.getJSON(`https://api.coingecko.com/api/v3/simple/price?ids=monero&vs_currencies=usd`, function(bPrice) {
