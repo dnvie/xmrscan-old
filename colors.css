@@ -22,6 +22,7 @@
     --subheaderText: #ff6404;
     --dropShadow: #00000033;
     --dropShadowFocused: #00000053;
+    --menuBackground: #0c0c0c;
 }
 
 [data-theme="dark"] {
@@ -44,8 +45,9 @@
     --subheaderBG: #ff6404;
     --subheaderBG2: #ff6404;
     --subheaderText: white;
-    --dropShadow: #00000013;
-    --dropShadowFocused: #00000023;
+    --dropShadow: #00000003;
+    --dropShadowFocused: #00000013;
+    --menuBackground: rgb(255, 255, 255);
 }
 
 @font-face {

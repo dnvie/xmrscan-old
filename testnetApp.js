@@ -2,7 +2,7 @@ var topOfPageTx = false;
 var topOfPageDetails = false;
 var onMain = true;
 var onMempool = false;
-var baseUrl = "https://xmrchain.net/"
+var baseUrl = "https://testnet.xmrchain.net/"
 
 function txPopUp() {
     $('.txPopUp').addClass('active');
