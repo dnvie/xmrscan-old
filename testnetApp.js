@@ -519,6 +519,10 @@ function scrollProgressBlock() {
     onMempool = false;
   }
 
+  function collapseMenuLight() {
+    $('.menu').removeClass('expanded');
+  }
+
   function showMempool() {
     onMempool = true;
     $('.mempool').addClass('active');

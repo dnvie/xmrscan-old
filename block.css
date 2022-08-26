@@ -1052,6 +1052,12 @@ input::selection {
     .detailsPopUp {
         width: clamp(650px, 75%, 1700px);
     }
+    .mempool {
+        width: clamp(650px, 75%, 1700px);
+    }
+    .progressBarMempool {
+        width: clamp(650px, 75%, 1700px);
+    }
     .progressBarBlock {
         width: clamp(650px, 75%, 1700px);
     }
@@ -1100,6 +1106,12 @@ input::selection {
     .detailsPopUp {
         width: clamp(650px, 85%, 1700px);
          /*height: clamp(73vh, 1500px, 78vh);*/
+    }
+    .mempool {
+        width: clamp(650px, 85%, 1700px);
+    }
+    .progressBarMempool {
+        width: clamp(650px, 85%, 1700px);
     }
     .progressBarBlock {
         width: clamp(650px, 85%, 1700px);
@@ -1161,6 +1173,12 @@ input::selection {
         width: clamp(450px, 95%, 1700px);
         /*height: clamp(70vh, 1500px, 75vh);*/
     }
+    .mempool {
+        width: clamp(450px, 95%, 1700px);
+    }
+    .progressBarMempool {
+        width: clamp(450px, 95%, 1700px);
+    }
     .progressBarBlock {
         width: clamp(450px, 95%, 1700px);
     }
@@ -1205,6 +1223,12 @@ input::selection {
     .detailsPopUp {
         width: clamp(300px, 100%, 1700px);
         /*height: clamp(70vh, 1500px, 75vh);*/
+    }
+    .mempool {
+        width: clamp(300px, 100%, 1700px);
+    }
+    .progressBarMempool {
+        width: clamp(300px, 100%, 1700px);
     }
     .progressBarBlock {
         width: clamp(300px, 100%, 1700px);
@@ -1262,6 +1286,12 @@ input::selection {
     .blockPopUp {
         width: clamp(650px, 75%, 2200px);
         /*height: clamp(90vh, 2500px, 95vh);*/
+    }
+    .mempool {
+        width: clamp(650px, 75%, 2200px);
+    }
+    .progressBarMempool {
+        width: clamp(650px, 75%, 2200px);
     }
     .frame {
         height: clamp(90vh, 2500px, 95vh);
